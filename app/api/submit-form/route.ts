@@ -1,25 +1,11 @@
 import { NextResponse } from 'next/server';
-import * as XLSX from 'xlsx';
-import * as fs from 'fs';
-import * as path from 'path';
-
-const DATA_DIR = path.join(process.cwd(), 'data');
-const EXCEL_FILE = path.join(DATA_DIR, 'submissions.xlsx');
+import { supabase } from '@/lib/supabase';
 
 interface FormData {
   name: string;
   email: string;
   phone: string;
   carModel: string;
-}
-
-interface SubmissionRow {
-  Name: string;
-  Email: string;
-  Phone: string;
-  'Car Model': string;
-  'Submission Date': string;
-  Timestamp: string;
 }
 
 export async function POST(request: Request) {
@@ -44,79 +30,42 @@ export async function POST(request: Request) {
       );
     }
 
-    // Ensure data directory exists
-    if (!fs.existsSync(DATA_DIR)) {
-      fs.mkdirSync(DATA_DIR, { recursive: true });
+    // Check for duplicate email in Supabase
+    const { data: existingSubmission, error: checkError } = await supabase
+      .from('submissions')
+      .select('email')
+      .eq('email', email.toLowerCase())
+      .single();
+
+    if (existingSubmission) {
+      return NextResponse.json(
+        { message: 'This email is already registered. Please use a different email.' },
+        { status: 409 }
+      );
     }
 
-    let workbook: XLSX.WorkBook;
-    let worksheet: XLSX.WorkSheet;
-    let data: SubmissionRow[] = [];
-
-    // Read existing Excel file or create new one
-    if (fs.existsSync(EXCEL_FILE)) {
-      try {
-        const fileBuffer = fs.readFileSync(EXCEL_FILE);
-        workbook = XLSX.read(fileBuffer, { type: 'buffer' });
-        worksheet = workbook.Sheets[workbook.SheetNames[0]];
-        data = XLSX.utils.sheet_to_json<SubmissionRow>(worksheet);
-
-        // Check for duplicate email
-        const existingEntry = data.find(
-          (row) => row.Email.toLowerCase() === email.toLowerCase()
-        );
-
-        if (existingEntry) {
-          return NextResponse.json(
-            { message: 'This email is already registered. Please use a different email.' },
-            { status: 409 }
-          );
+    // Insert new submission into Supabase
+    const { data, error } = await supabase
+      .from('submissions')
+      .insert([
+        {
+          name,
+          email: email.toLowerCase(),
+          phone,
+          car_model: carModel,
         }
-      } catch (error) {
-        console.error('Error reading existing file, creating new one');
-        workbook = XLSX.utils.book_new();
-      }
-    } else {
-      workbook = XLSX.utils.book_new();
+      ])
+      .select();
+
+    if (error) {
+      console.error('Supabase error:', error);
+      return NextResponse.json(
+        { message: 'Failed to save submission. Please try again.' },
+        { status: 500 }
+      );
     }
 
-    // Add new submission
-    const now = new Date();
-    const newRow: SubmissionRow = {
-      Name: name,
-      Email: email,
-      Phone: phone,
-      'Car Model': carModel,
-      'Submission Date': now.toLocaleDateString('en-IN'),
-      Timestamp: now.toISOString(),
-    };
-
-    data.push(newRow);
-
-    // Convert to worksheet and save
-    worksheet = XLSX.utils.json_to_sheet(data);
-
-    // Auto-size columns
-    const colWidths = [
-      { wch: 20 }, // Name
-      { wch: 30 }, // Email
-      { wch: 15 }, // Phone
-      { wch: 25 }, // Car Model
-      { wch: 15 }, // Submission Date
-      { wch: 25 }, // Timestamp
-    ];
-    worksheet['!cols'] = colWidths;
-
-    // Update workbook
-    if (workbook.SheetNames.length === 0) {
-      XLSX.utils.book_append_sheet(workbook, worksheet, 'Submissions');
-    } else {
-      workbook.Sheets[workbook.SheetNames[0]] = worksheet;
-    }
-
-    // Write to file using buffer approach
-    const buffer = XLSX.write(workbook, { type: 'buffer', bookType: 'xlsx' });
-    fs.writeFileSync(EXCEL_FILE, buffer);
+    console.log('New submission saved:', data);
 
     return NextResponse.json(
       { 
