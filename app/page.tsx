@@ -33,28 +33,52 @@ export default function Home() {
   // Track visitor on page load
   useEffect(() => {
     const trackVisitor = async () => {
-      try {
-        // Get location from IP
-        const locationResponse = await fetch('https://ipapi.co/json/');
-        const locationData = await locationResponse.json();
+      let locationData = {
+        city: 'Unknown',
+        region: 'Unknown',
+        country: 'Unknown',
+        ip: 'Unknown',
+      };
 
+      try {
+        // Try to get location from IP (with timeout)
+        const controller = new AbortController();
+        const timeoutId = setTimeout(() => controller.abort(), 5000); // 5 second timeout
+
+        const locationResponse = await fetch('https://ipapi.co/json/', {
+          signal: controller.signal,
+        });
+        clearTimeout(timeoutId);
+
+        if (locationResponse.ok) {
+          const data = await locationResponse.json();
+          locationData = {
+            city: data.city || 'Unknown',
+            region: data.region || 'Unknown',
+            country: data.country_name || 'Unknown',
+            ip: data.ip || 'Unknown',
+          };
+        }
+      } catch (error) {
+        // Silently fail location lookup, continue with tracking
+        console.log('Location lookup unavailable, tracking with default location');
+      }
+
+      // Track visitor even if location lookup failed
+      try {
         await fetch('/api/track-visitor', {
           method: 'POST',
           headers: {
             'Content-Type': 'application/json',
           },
           body: JSON.stringify({
-            location: {
-              city: locationData.city,
-              region: locationData.region,
-              country: locationData.country_name,
-              ip: locationData.ip,
-            },
+            location: locationData,
             timestamp: new Date().toISOString(),
           }),
         });
       } catch (error) {
-        console.error('Failed to track visitor:', error);
+        // Silently fail tracking to not disrupt user experience
+        console.log('Visitor tracking unavailable');
       }
     };
 
@@ -121,7 +145,7 @@ export default function Home() {
         {/* Background Image */}
         <div 
           className="absolute inset-0 bg-cover bg-center bg-no-repeat"
-          style={{ backgroundImage: 'url(/image1.png)' }}
+          style={{ backgroundImage: 'url(/image1.jpg)' }}
         />
         {/* Gradient Overlay - fades from left (solid color) to right (transparent) */}
         <div 
