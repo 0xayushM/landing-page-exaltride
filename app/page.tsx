@@ -97,7 +97,7 @@ export default function Home() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex justify-between items-center h-20">
             <div className="flex items-center">
-              <Image src="/logo.png" alt="Exaltride" width={180} height={60} className="h-12 w-auto" />
+              <Image src="/logo.png" alt="Exaltride" width={200} height={100} className="h-12 w-auto" />
             </div>
             <button
               onClick={() => setIsMenuOpen(!isMenuOpen)}
@@ -185,7 +185,7 @@ export default function Home() {
               </p>
             </div>
 
-            <div className="flex flex-col items-center text-center">
+            <div className="flex flex-col items-center text-center col-span-2 md:col-span-1">
               <div className="w-14 h-14 bg-[#0f2847] rounded-lg flex items-center justify-center mb-3">
                 <MessageSquare size={28} className="text-[#fbbf24]" />
               </div>
