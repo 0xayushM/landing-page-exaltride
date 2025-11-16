@@ -2,7 +2,7 @@
 
 import { useState, useEffect } from 'react';
 import Image from 'next/image';
-import { FileText, Shield, MapPin, DollarSign, MessageSquare, Menu, X, ChevronDown } from 'lucide-react';
+import { FileText, Shield, MapPin, DollarSign, MessageSquare, ChevronDown } from 'lucide-react';
 
 const carModels = [
   'Maruti Suzuki Swift',
@@ -19,7 +19,6 @@ const carModels = [
 ];
 
 export default function Home() {
-  const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [formData, setFormData] = useState({
     name: '',
     email: '',
@@ -267,7 +266,7 @@ export default function Home() {
                     required
                     value={formData.name}
                     onChange={(e) => setFormData({ ...formData, name: e.target.value })}
-                    className="w-full px-3 py-2 text-sm border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#fbbf24] placeholder:text-gray-500"
+                    className="w-full px-3 py-2 text-sm text-gray-900 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#fbbf24] placeholder:text-gray-500"
                   />
                 </div>
 
@@ -278,7 +277,7 @@ export default function Home() {
                     required
                     value={formData.email}
                     onChange={(e) => setFormData({ ...formData, email: e.target.value })}
-                    className="w-full px-3 py-2 text-sm border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#fbbf24] placeholder:text-gray-500"
+                    className="w-full px-3 py-2 text-sm text-gray-900 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#fbbf24] placeholder:text-gray-500"
                   />
                 </div>
 
@@ -289,7 +288,7 @@ export default function Home() {
                     required
                     value={formData.phone}
                     onChange={(e) => setFormData({ ...formData, phone: e.target.value })}
-                    className="w-full px-3 py-2 text-sm border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#fbbf24] placeholder:text-gray-500"
+                    className="w-full px-3 py-2 text-sm text-gray-900 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#fbbf24] placeholder:text-gray-500"
                   />
                 </div>
 
