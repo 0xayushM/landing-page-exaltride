@@ -61,6 +61,13 @@ export default function Home() {
     trackVisitor();
   }, []);
 
+  const scrollToForm = () => {
+    const formSection = document.getElementById('join-form');
+    if (formSection) {
+      formSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }
+  };
+
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setIsSubmitting(true);
@@ -97,7 +104,7 @@ export default function Home() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex justify-between items-center h-20">
             <div className="flex items-center">
-              <Image src="/logo.png" alt="Exaltride" width={200} height={100} className="h-12 w-auto" />
+              <Image src="/logo.png" alt="Exaltride" width={200} height={100} className="h-24 w-auto" />
             </div>
             <button
               onClick={() => setIsMenuOpen(!isMenuOpen)}
@@ -110,8 +117,21 @@ export default function Home() {
       </nav>
 
       {/* Hero Section */}
-      <section className="bg-[#0f2847] text-white pt-24 pb-8 px-4 sm:px-6 lg:px-8">
-        <div className="max-w-7xl mx-auto">
+      <section className="relative text-white pt-24 pb-8 px-4 sm:px-6 lg:px-8 overflow-hidden">
+        {/* Background Image */}
+        <div 
+          className="absolute inset-0 bg-cover bg-center bg-no-repeat"
+          style={{ backgroundImage: 'url(/image1.png)' }}
+        />
+        {/* Gradient Overlay - fades from left (solid color) to right (transparent) */}
+        <div 
+          className="absolute inset-0"
+          style={{ 
+            background: 'linear-gradient(to right, #0f2847 0%, #0f2847 40%, rgba(15, 40, 71, 0.7) 70%, transparent 100%)'
+          }}
+        />
+        {/* Content */}
+        <div className="max-w-7xl py-12 mx-auto relative z-10">
           <div className="max-w-2xl">
             <h1 className="text-3xl sm:text-4xl lg:text-5xl font-bold leading-tight mb-4">
               Your Car Deserves Better Accessories.<br />
@@ -121,12 +141,12 @@ export default function Home() {
               Join thousands of car owners waiting for India's new aftermarket marketplace.
             </p>
             <div className="flex flex-col sm:flex-row gap-3">
-              <a
-                href="#join-form"
-                className="inline-flex items-center justify-center px-6 py-3 text-base font-semibold text-[#0f2847] bg-[#fbbf24] rounded-lg hover:bg-[#f59e0b] transition-colors"
+              <button
+                onClick={scrollToForm}
+                className="inline-flex items-center justify-center px-6 py-3 text-base font-semibold text-[#0f2847] bg-[#fbbf24] rounded-lg hover:bg-[#f59e0b] transition-colors cursor-pointer"
               >
                 Get Early Access + Launch Credits
-              </a>
+              </button>
               <a
                 href="https://vendor.exaltride.com"
                 className="inline-flex items-center justify-center px-6 py-3 text-base font-semibold text-white border-2 border-white rounded-lg hover:bg-white hover:text-[#0f2847] transition-colors"
@@ -229,7 +249,7 @@ export default function Home() {
                     required
                     value={formData.name}
                     onChange={(e) => setFormData({ ...formData, name: e.target.value })}
-                    className="w-full px-3 py-2 text-sm border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#fbbf24]"
+                    className="w-full px-3 py-2 text-sm border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#fbbf24] placeholder:text-gray-500"
                   />
                 </div>
 
@@ -240,7 +260,7 @@ export default function Home() {
                     required
                     value={formData.email}
                     onChange={(e) => setFormData({ ...formData, email: e.target.value })}
-                    className="w-full px-3 py-2 text-sm border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#fbbf24]"
+                    className="w-full px-3 py-2 text-sm border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#fbbf24] placeholder:text-gray-500"
                   />
                 </div>
 
@@ -251,7 +271,7 @@ export default function Home() {
                     required
                     value={formData.phone}
                     onChange={(e) => setFormData({ ...formData, phone: e.target.value })}
-                    className="w-full px-3 py-2 text-sm border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#fbbf24]"
+                    className="w-full px-3 py-2 text-sm border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#fbbf24] placeholder:text-gray-500"
                   />
                 </div>
 
@@ -260,7 +280,7 @@ export default function Home() {
                     required
                     value={formData.carModel}
                     onChange={(e) => setFormData({ ...formData, carModel: e.target.value })}
-                    className="w-full px-3 py-2 text-sm border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#fbbf24] appearance-none bg-white"
+                    className={`w-full px-3 py-2 text-sm border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#fbbf24] appearance-none bg-white ${formData.carModel ? 'text-gray-900' : 'text-gray-500'}`}
                   >
                     <option value="">Select Your Car Model</option>
                     {carModels.map((model) => (
@@ -292,10 +312,10 @@ export default function Home() {
       </section>
 
       {/* Footer */}
-      <footer className="bg-[#0f2847] text-white py-6 px-4 sm:px-6 lg:px-8">
+      <footer className="bg-[#0f2847] text-white py-5 px-4 sm:px-6 lg:px-8">
         <div className="max-w-7xl mx-auto text-center">
           <div className="mb-4">
-            <Image src="/logo.png" alt="Exaltride" width={150} height={45} className="h-10 w-auto mx-auto mb-3" />
+            <Image src="/logo.png" alt="Exaltride" width={150} height={45} className="h-24 w-auto mx-auto mb-3" />
           </div>
           <div className="space-y-2 text-sm">
             <p className="font-semibold">Made for Indian car owners. Built by people who've lived the same problems.</p>
