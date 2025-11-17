@@ -24,6 +24,7 @@ export default function JoinForm() {
     phone: '',
     carModel: '',
   });
+  const [customCarModel, setCustomCarModel] = useState('');
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [submitMessage, setSubmitMessage] = useState('');
   const [timeLeft, setTimeLeft] = useState({
@@ -63,12 +64,16 @@ export default function JoinForm() {
     setSubmitMessage('');
 
     try {
+      const finalCarModel = formData.carModel === 'Other' ? customCarModel : formData.carModel;
       const response = await fetch('/api/submit-form', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
         },
-        body: JSON.stringify(formData),
+        body: JSON.stringify({
+          ...formData,
+          carModel: finalCarModel,
+        }),
       });
 
       const data = await response.json();
@@ -76,6 +81,7 @@ export default function JoinForm() {
       if (response.ok) {
         setSubmitMessage('✓ Successfully joined! Check your email for details.');
         setFormData({ name: '', email: '', phone: '', carModel: '' });
+        setCustomCarModel('');
       } else {
         setSubmitMessage(data.message || 'Something went wrong. Please try again.');
       }
@@ -173,7 +179,12 @@ export default function JoinForm() {
               <select
                 required
                 value={formData.carModel}
-                onChange={(e) => setFormData({ ...formData, carModel: e.target.value })}
+                onChange={(e) => {
+                  setFormData({ ...formData, carModel: e.target.value });
+                  if (e.target.value !== 'Other') {
+                    setCustomCarModel('');
+                  }
+                }}
                 className={`w-full px-4 py-3 text-sm bg-gray-50 border border-gray-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#003AAD] appearance-none ${formData.carModel ? 'text-gray-900' : 'text-gray-500'}`}
               >
                 <option value="">Select Your Car Model</option>
@@ -185,6 +196,19 @@ export default function JoinForm() {
               </select>
               <ChevronDown className="absolute right-3 top-1/2 -translate-y-1/2 text-gray-400 pointer-events-none" size={20} />
             </div>
+
+            {formData.carModel === 'Other' && (
+              <div>
+                <input
+                  type="text"
+                  placeholder="Enter your car model"
+                  required
+                  value={customCarModel}
+                  onChange={(e) => setCustomCarModel(e.target.value)}
+                  className="w-full px-4 py-3 text-sm text-gray-900 bg-gray-50 border border-gray-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#003AAD] placeholder:text-gray-500"
+                />
+              </div>
+            )}
 
             <button
               type="submit"
