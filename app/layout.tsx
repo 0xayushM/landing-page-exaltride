@@ -11,6 +11,9 @@ const montserrat = Montserrat({
 export const metadata: Metadata = {
   title: "Exaltride - Your Ride Reinvented",
   description: "Join thousands of car owners waiting for India's new aftermarket marketplace.",
+  icons: {
+    icon: '/favicon.png',
+  },
 };
 
 export default function RootLayout({
