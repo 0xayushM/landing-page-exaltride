@@ -1,12 +1,50 @@
 import Image from 'next/image';
+import Link from 'next/link';
 
-export default function Navbar() {
+interface NavbarProps {
+  onGetEarlyAccess: () => void;
+}
+
+export default function Navbar({ onGetEarlyAccess }: NavbarProps) {
   return (
-    <nav className="fixed top-0 w-full bg-[#003AAD] z-50 border-b border-[#0047cc] shadow-sm">
+    <nav className="fixed top-0 w-full bg-white z-50 shadow-sm">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex justify-center md:justify-between items-center h-20">
+        <div className="flex justify-between items-center h-16">
+          {/* Logo */}
           <div className="flex items-center">
-            <Image src="/logo.png" alt="Exaltride" width={200} height={100} className="h-24 w-auto" />
+            <Image src="/dark_logo.png" alt="Exaltride" width={120} height={40} className="h-20 w-auto" />
+          </div>
+          
+          {/* Navigation Links */}
+          <div className="hidden md:flex items-center space-x-8">
+            <Link href="#features" className="text-gray-700 hover:text-[#003AAD] transition-colors text-sm font-medium">
+              Features
+            </Link>
+            <Link href="#how-it-works" className="text-gray-700 hover:text-[#003AAD] transition-colors text-sm font-medium">
+              How It Works
+            </Link>
+            <Link href="https://vendor.exaltride.com" className="text-gray-700 hover:text-[#003AAD] transition-colors text-sm font-medium">
+              For Vendors
+            </Link>
+            <Link href="#faq" className="text-gray-700 hover:text-[#003AAD] transition-colors text-sm font-medium">
+              FAQ
+            </Link>
+            <button
+              onClick={onGetEarlyAccess}
+              className="px-5 py-2 text-sm font-semibold text-[#003AAD] bg-[#FDB913] rounded-md hover:bg-[#f5b400] transition-colors"
+            >
+              Get Early Access
+            </button>
+          </div>
+
+          {/* Mobile CTA */}
+          <div className="md:hidden">
+            <button
+              onClick={onGetEarlyAccess}
+              className="px-4 py-2 text-sm font-semibold text-[#003AAD] bg-[#FDB913] rounded-md"
+            >
+              Get Early Access
+            </button>
           </div>
         </div>
       </div>

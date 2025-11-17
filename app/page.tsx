@@ -5,6 +5,8 @@ import Navbar from '@/components/Navbar';
 import HeroSection from '@/components/HeroSection';
 import FeaturesSection from '@/components/FeaturesSection';
 import JoinForm from '@/components/JoinForm';
+import PlatformPreview from '@/components/PlatformPreview';
+import CTASection from '@/components/CTASection';
 import Footer from '@/components/Footer';
 
 export default function Home() {
@@ -72,10 +74,12 @@ export default function Home() {
 
   return (
     <div className="min-h-screen bg-white">
-      <Navbar />
+      <Navbar onGetEarlyAccess={scrollToForm} />
       <HeroSection onGetEarlyAccess={scrollToForm} />
       <FeaturesSection />
       <JoinForm />
+      <PlatformPreview />
+      <CTASection onGetEarlyAccess={scrollToForm} />
       <Footer />
     </div>
   );
