@@ -70,7 +70,7 @@ export default function PopularCategories() {
               >
                 {/* Image */}
                 <div className="flex items-center justify-center mb-4">
-                  <div className={`w-16 h-16 rounded-2xl flex items-center justify-center overflow-hidden group-hover:scale-110 transition-transform`}>
+                  <div className={`w-24 h-24 rounded-2xl flex items-center justify-center overflow-hidden group-hover:scale-110 transition-transform`}>
                     <Image 
                       src={category.image} 
                       alt={category.name} 
@@ -108,7 +108,7 @@ export default function PopularCategories() {
               >
                 {/* Image */}
                 <div className="flex items-center justify-center mb-4">
-                  <div className={`w-16 h-16 rounded-2xl flex items-center justify-center overflow-hidden group-hover:scale-110 transition-transform`}>
+                  <div className={`w-24 h-24 rounded-2xl flex items-center justify-center overflow-hidden group-hover:scale-110 transition-transform`}>
                     <Image 
                       src={category.image} 
                       alt={category.name} 
