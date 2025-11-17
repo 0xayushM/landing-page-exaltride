@@ -3,34 +3,29 @@ import Image from 'next/image';
 export default function FeaturesSection() {
   const features = [
     {
-      icon: './icon1.png',
+      icon: '/icon1.png',
       title: 'Real Information',
       description: 'No confusing specs. Just honest product clarity.',
-      gradient: 'from-blue-500 to-cyan-500',
     },
     {
-      icon: './icon2.png',
+      icon: '/icon2.png',
       title: 'Verified Sellers Only',
       description: 'We work only with trusted vendors.',
-      gradient: 'from-emerald-500 to-teal-500',
     },
     {
-      icon: './icon3.png',
+      icon: '/icon3.png',
       title: 'Availability Across India',
       description: 'Even for older models and rare accessories.',
-      gradient: 'from-violet-500 to-purple-500',
     },
     {
-      icon: './icon4.png',
+      icon: '/icon4.png',
       title: 'Transparent Pricing',
       description: 'No negotiation games. No random quotes.',
-      gradient: 'from-amber-500 to-orange-500',
     },
     {
-      icon: './icon5.png',
+      icon: '/icon5.png',
       title: 'Reviews From Real Owners',
       description: 'Not manipulated. Not faked.',
-      gradient: 'from-rose-500 to-pink-500',
     },
   ];
 
@@ -50,10 +45,10 @@ export default function FeaturesSection() {
             return (
               <div
                 key={index}
-                className="group relative flex flex-col items-center text-center p-6 bg-white rounded-2xl shadow-sm hover:shadow-xl transition-all duration-300 hover:-translate-y-2"
+                className="group relative flex flex-col items-center text-center p-2 bg-white rounded-2xl shadow-sm hover:shadow-xl transition-all duration-300 hover:-translate-y-2"
               >
-                <div className={`w-16 h-16 bg-gradient-to-br ${feature.gradient} rounded-xl flex items-center justify-center mb-4 group-hover:scale-110 transition-transform duration-300 shadow-lg`}>
-                  <Image src={feature.icon} alt={feature.title} width={32} height={32} />
+                <div className={`w-24 h-24 rounded-xl flex items-center justify-center mb-4 group-hover:scale-110 transition-transform duration-300 `}>
+                  <Image src={feature.icon} alt={feature.title} width={40} height={40} className="h-16 w-16 object-contain" />
                 </div>
                 <h3 className="text-base font-bold mb-2 text-gray-900">{feature.title}</h3>
                 <p className="text-gray-600 text-sm leading-relaxed">{feature.description}</p>
