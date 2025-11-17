@@ -21,15 +21,15 @@ export default function FAQSection() {
     },
     {
       question: 'What are the launch credits?',
-      answer: 'Early access members receive ₹500 in launch credits that can be used towards their first purchase on ExaltRide. These credits will be automatically applied to your account on launch day.',
+      answer: 'Early access members receive upto ₹500* in launch credits that can be used towards their first purchase on ExaltRide. These credits will be automatically applied to your account on launch day.',
     },
     {
       question: 'Can I sell on ExaltRide?',
-      answer: 'Yes! We welcome verified vendors to sell on our platform. Visit our vendor portal to apply. We offer zero commission for the first 6 months, marketing support, and access to thousands of car owners nationwide.',
+      answer: 'Yes! We welcome verified vendors to sell on our platform. Visit our vendor portal to apply.',
     },
     {
       question: 'Is there a mobile app?',
-      answer: 'Yes, we\'re launching with both web and mobile apps (iOS and Android). You\'ll have a seamless shopping experience across all devices with synchronized carts and wishlists.',
+      answer: 'Not yet, but we\'re already building it, and it will be launching soon both on iOS and Android!',
     },
   ];
 

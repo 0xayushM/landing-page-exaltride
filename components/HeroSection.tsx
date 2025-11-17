@@ -72,7 +72,7 @@ export default function HeroSection({ onGetEarlyAccess }: HeroSectionProps) {
                 onClick={onGetEarlyAccess}
                 className="inline-flex items-center justify-center px-6 py-3.5 text-base font-semibold text-[#001d4a] bg-[#FDB913] rounded-lg hover:bg-[#f5b400] transition-all shadow-lg hover:shadow-xl"
               >
-                Get Early Access + ₹500 Credits
+                Get Early Access + ₹500* Credits
               </button>
               <a
                 href="https://vendor.exaltride.com"

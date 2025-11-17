@@ -85,7 +85,7 @@ export default function Home() {
       <PopularCategories />
       <JoinForm />
       <FAQSection />
-      <FinalCTA onGetEarlyAccess={scrollToForm} />
+      {/* <FinalCTA onGetEarlyAccess={scrollToForm} /> */}
       {/* <PlatformPreview /> */}
       {/* <CTASection onGetEarlyAccess={scrollToForm} /> */}
       <Footer />

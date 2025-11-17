@@ -14,8 +14,8 @@ export default function Footer() {
               Made for Indian car owners. Built by people who've lived the same problems.
             </p>
             <div className="text-sm text-gray-300">
-              <a href="mailto:Customersupport@exaltride.com" className="hover:text-[#FDB913] transition-colors">
-                Customersupport@exaltride.com
+              <a href="mailto:support@exaltride.com" className="hover:text-[#FDB913] transition-colors">
+                support@exaltride.com
               </a>
             </div>
           </div>
@@ -50,14 +50,6 @@ export default function Footer() {
         <div className="border-t border-gray-700 pt-6">
           <div className="flex flex-col md:flex-row justify-between items-center gap-4 text-sm text-gray-400">
             <p>&copy; 2025 Exaltride. All rights reserved.</p>
-            <div className="flex gap-6">
-              <a href="/privacy-policy" className="hover:text-[#FDB913] transition-colors">
-                Privacy Policy
-              </a>
-              <a href="/terms-of-use" className="hover:text-[#FDB913] transition-colors">
-                Terms of Use
-              </a>
-            </div>
           </div>
         </div>
       </div>

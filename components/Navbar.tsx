@@ -60,7 +60,7 @@ export default function Navbar({ onGetEarlyAccess }: NavbarProps) {
           <div className="md:hidden">
             <button
               onClick={onGetEarlyAccess}
-              className="px-4 py-2 text-sm font-semibold text-[#003AAD] bg-[#FDB913] rounded-md"
+              className="px-4 py-2 text-sm font-semibold text-[#002753] bg-[#FDB913] rounded-md"
             >
               Get Early Access
             </button>

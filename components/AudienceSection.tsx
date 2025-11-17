@@ -34,10 +34,6 @@ export default function AudienceSection({ onGetEarlyAccess }: AudienceSectionPro
               </li>
               <li className="flex items-start gap-3">
                 <Check className="w-5 h-5 text-green-500 flex-shrink-0 mt-0.5" strokeWidth={2.5} />
-                <span className="text-gray-700">Free delivery on orders above ₹500</span>
-              </li>
-              <li className="flex items-start gap-3">
-                <Check className="w-5 h-5 text-green-500 flex-shrink-0 mt-0.5" strokeWidth={2.5} />
                 <span className="text-gray-700">Easy returns and warranty claims</span>
               </li>
             </ul>
@@ -66,10 +62,6 @@ export default function AudienceSection({ onGetEarlyAccess }: AudienceSectionPro
               <li className="flex items-start gap-3">
                 <Check className="w-5 h-5 text-green-500 flex-shrink-0 mt-0.5" strokeWidth={2.5} />
                 <span className="text-gray-700">Reach lakhs of car owners nationwide</span>
-              </li>
-              <li className="flex items-start gap-3">
-                <Check className="w-5 h-5 text-green-500 flex-shrink-0 mt-0.5" strokeWidth={2.5} />
-                <span className="text-gray-700">Zero commission for first 6 months</span>
               </li>
               <li className="flex items-start gap-3">
                 <Check className="w-5 h-5 text-green-500 flex-shrink-0 mt-0.5" strokeWidth={2.5} />
