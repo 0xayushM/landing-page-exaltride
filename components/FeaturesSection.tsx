@@ -1,33 +1,33 @@
-import { FileText, Shield, MapPin, DollarSign, MessageSquare } from 'lucide-react';
+import Image from 'next/image';
 
 export default function FeaturesSection() {
   const features = [
     {
-      icon: FileText,
+      icon: './icon1.png',
       title: 'Real Information',
       description: 'No confusing specs. Just honest product clarity.',
       gradient: 'from-blue-500 to-cyan-500',
     },
     {
-      icon: Shield,
+      icon: './icon2.png',
       title: 'Verified Sellers Only',
       description: 'We work only with trusted vendors.',
       gradient: 'from-emerald-500 to-teal-500',
     },
     {
-      icon: MapPin,
+      icon: './icon3.png',
       title: 'Availability Across India',
       description: 'Even for older models and rare accessories.',
       gradient: 'from-violet-500 to-purple-500',
     },
     {
-      icon: DollarSign,
+      icon: './icon4.png',
       title: 'Transparent Pricing',
       description: 'No negotiation games. No random quotes.',
       gradient: 'from-amber-500 to-orange-500',
     },
     {
-      icon: MessageSquare,
+      icon: './icon5.png',
       title: 'Reviews From Real Owners',
       description: 'Not manipulated. Not faked.',
       gradient: 'from-rose-500 to-pink-500',
@@ -47,14 +47,13 @@ export default function FeaturesSection() {
         </div>
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-6 lg:gap-8">
           {features.map((feature, index) => {
-            const Icon = feature.icon;
             return (
               <div
                 key={index}
                 className="group relative flex flex-col items-center text-center p-6 bg-white rounded-2xl shadow-sm hover:shadow-xl transition-all duration-300 hover:-translate-y-2"
               >
                 <div className={`w-16 h-16 bg-gradient-to-br ${feature.gradient} rounded-xl flex items-center justify-center mb-4 group-hover:scale-110 transition-transform duration-300 shadow-lg`}>
-                  <Icon size={32} className="text-white" strokeWidth={2.5} />
+                  <Image src={feature.icon} alt={feature.title} width={32} height={32} />
                 </div>
                 <h3 className="text-base font-bold mb-2 text-gray-900">{feature.title}</h3>
                 <p className="text-gray-600 text-sm leading-relaxed">{feature.description}</p>
