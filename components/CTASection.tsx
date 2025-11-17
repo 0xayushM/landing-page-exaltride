@@ -17,7 +17,7 @@ export default function CTASection({ onGetEarlyAccess }: CTASectionProps) {
           </div>
 
           {/* Heading */}
-          <h2 className="text-3xl sm:text-4xl font-bold text-[#003AAD] mb-4">
+          <h2 className="text-3xl sm:text-4xl font-regular text-[#003AAD] mb-4">
             Ready to Transform Your Car Shopping Experience?
           </h2>
 

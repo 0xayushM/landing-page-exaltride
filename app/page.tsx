@@ -4,7 +4,11 @@ import { useEffect } from 'react';
 import Navbar from '@/components/Navbar';
 import HeroSection from '@/components/HeroSection';
 import FeaturesSection from '@/components/FeaturesSection';
+import AudienceSection from '@/components/AudienceSection';
+import PopularCategories from '@/components/PopularCategories';
 import JoinForm from '@/components/JoinForm';
+import FAQSection from '@/components/FAQSection';
+import FinalCTA from '@/components/FinalCTA';
 import PlatformPreview from '@/components/PlatformPreview';
 import CTASection from '@/components/CTASection';
 import Footer from '@/components/Footer';
@@ -77,9 +81,13 @@ export default function Home() {
       <Navbar onGetEarlyAccess={scrollToForm} />
       <HeroSection onGetEarlyAccess={scrollToForm} />
       <FeaturesSection />
+      <AudienceSection onGetEarlyAccess={scrollToForm} />
+      <PopularCategories />
       <JoinForm />
-      <PlatformPreview />
-      <CTASection onGetEarlyAccess={scrollToForm} />
+      <FAQSection />
+      <FinalCTA onGetEarlyAccess={scrollToForm} />
+      {/* <PlatformPreview /> */}
+      {/* <CTASection onGetEarlyAccess={scrollToForm} /> */}
       <Footer />
     </div>
   );

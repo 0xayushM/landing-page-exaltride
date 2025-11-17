@@ -5,7 +5,7 @@ export default function PlatformPreview() {
     <section className="py-16 px-4 sm:px-6 lg:px-8 bg-[#F9FAFB]">
       <div className="max-w-7xl mx-auto">
         {/* Heading */}
-        <h2 className="text-3xl sm:text-4xl font-bold mb-12 text-gray-900">
+        <h2 className="text-3xl sm:text-4xl font-regular mb-12 text-gray-900">
           Take a <span className="text-[#003AAD]">sneak peek</span> into our{' '}
           <span className="text-[#003AAD]">platform</span>
           <div className="h-1 w-24 bg-[#FDB913] mt-2"></div>
@@ -16,7 +16,7 @@ export default function PlatformPreview() {
           <div className="grid grid-cols-1 lg:grid-cols-2 lg:gap-24 items-center">
             {/* Left Side - Text Content */}
             <div className="space-y-4">
-              <h3 className="text-2xl sm:text-3xl font-bold text-gray-900">
+              <h3 className="text-2xl sm:text-3xl font-regular text-gray-900">
                 Unified experience on web and mobile
               </h3>
               <p className="text-lg text-gray-600 leading-relaxed">

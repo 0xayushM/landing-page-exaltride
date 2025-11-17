@@ -1,4 +1,4 @@
-import { CheckCircle2, Package, Truck, Star, BadgeIndianRupee } from 'lucide-react';
+import { Sparkles, Shield, Users, Award, Package } from 'lucide-react';
 
 interface HeroSectionProps {
   onGetEarlyAccess: () => void;
@@ -7,164 +7,182 @@ interface HeroSectionProps {
 export default function HeroSection({ onGetEarlyAccess }: HeroSectionProps) {
   return (
     <>
-      <section className="relative pb-0 overflow-hidden">
-        <div className="flex flex-col lg:flex-row min-h-[500px] relative">
-          {/* Left Side - Blue Background */}
-          <div className="lg:w-1/2 bg-[#003AAD] text-white px-6 sm:px-12 py-16 relative z-10 pt-32">
+    <section className="relative min-h-screen pt-20 pb-16 overflow-hidden">
+      {/* Background Image */}
+      <div 
+        className="absolute inset-0 bg-cover bg-center bg-no-repeat"
+        style={{ 
+          backgroundImage: 'url(/hero_image.jpeg)',
+          filter: 'brightness(0.9)'
+        }}
+      />
+      
+      {/* Dark Overlay */}
+      <div className="absolute inset-0 bg-[#001d4a]/80" />
+
+      {/* Content Container */}
+      <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center min-h-[calc(100vh-200px)]">
+          
+          {/* Left Content */}
+          <div className="text-white space-y-8">
             {/* Launch Badge */}
-            <div className="inline-flex items-center gap-2 bg-[#FDB913] text-[#003AAD] px-4 py-2 rounded-full text-sm font-semibold mb-8">
-              <svg className="w-4 h-4" fill="currentColor" viewBox="0 0 20 20">
-                <path d="M10 2l2.5 6.5L19 10l-6.5 1.5L10 18l-2.5-6.5L1 10l6.5-1.5L10 2z"/>
-              </svg>
+            <div className="inline-flex items-center gap-2 bg-[#FDB913] text-[#001d4a] px-4 py-2.5 rounded-lg text-sm font-semibold">
+              <Sparkles className="w-4 h-4" />
               Launching December 14, 2025
             </div>
 
             {/* Heading */}
-            <h1 className="text-3xl sm:text-4xl lg:text-5xl font-bold leading-tight mb-6">
-              Your Car Deserves{' '}
-              <span className="text-[#FDB913]">Better Accessories.</span>
+            <h1 className="text-4xl sm:text-5xl lg:text-6xl leading-tight">
+              <span className="font-light  block mb-2">Your Car Deserves</span>
+              <span className="font-regular text-[#FDB913]">Better<br />Accessories.</span>
             </h1>
 
             {/* Description */}
-            <p className="text-base sm:text-lg text-blue-100 mb-6 max-w-xl">
-              Join thousands of car owners waiting for India's most transparent aftermarket marketplace. No confusing specs, no random quotes – just honest products and verified sellers.
+            <p className="text-base sm:text-lg text-gray-200 max-w-xl font-light leading-relaxed">
+              Join thousands of car owners waiting for India's most transparent aftermarket marketplace. No confusing specs, no random quotes - just honest products and verified sellers.
             </p>
 
-            {/* Trust Badges */}
-            <div className="flex flex-wrap gap-4 mb-8">
-              <div className="flex items-center gap-2 text-sm">
-                <CheckCircle2 className="w-5 h-5 text-[#FDB913]" />
-                <span>Quality Pre-Registration</span>
+            {/* Stats */}
+            <div className="flex flex-wrap gap-6 pt-4">
+              <div className="flex items-center gap-3">
+                <Users className="w-6 h-6 text-[#FDB913]" />
+                <div>
+                  <div className="text-xl font-regular">10,000+ Pre-</div>
+                  <div className="text-sm text-gray-300">Registrations</div>
+                </div>
               </div>
-              <div className="flex items-center gap-2 text-sm">
-                <CheckCircle2 className="w-5 h-5 text-[#FDB913]" />
-                <span>100+ Verified Vendors</span>
+              <div className="flex items-center gap-3">
+                <Award className="w-6 h-6 text-[#FDB913]" />
+                <div>
+                  <div className="text-xl font-regular">100+ Verified Vendors</div>
+                </div>
               </div>
-              <div className="flex items-center gap-2 text-sm">
-                <CheckCircle2 className="w-5 h-5 text-[#FDB913]" />
-                <span>Authentic Products</span>
+              <div className="flex items-center gap-3">
+                <Package className="w-6 h-6 text-[#FDB913]" />
+                <div>
+                  <div className="text-xl font-regular">10,000+ Products</div>
+                </div>
               </div>
             </div>
 
             {/* CTA Buttons */}
-            <div className="flex flex-col sm:flex-row gap-3">
+            <div className="flex flex-col sm:flex-row gap-4 pt-4">
               <button
                 onClick={onGetEarlyAccess}
-                className="inline-flex items-center justify-center px-6 py-3 text-base font-semibold text-[#003AAD] bg-[#FDB913] rounded-lg hover:bg-[#f5b400] transition-colors"
+                className="inline-flex items-center justify-center px-6 py-3.5 text-base font-semibold text-[#001d4a] bg-[#FDB913] rounded-lg hover:bg-[#f5b400] transition-all shadow-lg hover:shadow-xl"
               >
-                Get Early Access + ₹500 Credits →
+                Get Early Access + ₹500 Credits
               </button>
               <a
                 href="https://vendor.exaltride.com"
-                className="inline-flex items-center justify-center px-6 py-3 text-base font-semibold text-white border-2 border-white rounded-lg hover:bg-white hover:text-[#003AAD] transition-colors"
+                className="inline-flex items-center justify-center px-6 py-3.5 text-base font-semibold text-white border-2 border-white/80 rounded-lg hover:bg-white/10 transition-all backdrop-blur-sm"
               >
-                Become a Vendor →
+                Become a Vendor
               </a>
             </div>
-
           </div>
 
-          {/* Curved Wave Transition */}
-          <div className="absolute inset-0 pointer-events-none hidden lg:block">
-            <svg className="absolute top-0 left-0 h-full w-full" viewBox="0 0 100 100" preserveAspectRatio="none">
-              <path d="M 50 0 Q 35 50 50 100 L 100 100 L 100 0 Z" fill="#FDB913" />
-            </svg>
-          </div>
+          {/* Right Card - Glassmorphism */}
+          <div className="hidden lg:flex justify-center items-center">
+            <div className="backdrop-blur-md bg-white/10 border border-white/20 rounded-3xl p-8 shadow-2xl max-w-md w-full">
+              {/* Card Header */}
+              <div className="flex items-start gap-4 mb-6">
+                <div className="w-12 h-12 bg-[#FDB913] rounded-xl flex items-center justify-center flex-shrink-0">
+                  <Shield className="w-6 h-6 text-[#001d4a]" />
+                </div>
+                <div className="text-white">
+                  <h3 className="text-xl font-regular mb-1">Premium Accessories</h3>
+                  <p className="text-sm text-gray-200">10,000+ verified products for your car</p>
+                </div>
+              </div>
 
-          {/* Right Side - Yellow Background with Feature Card */}
-          <div className="lg:w-1/2 bg-[#FDB913] px-6 sm:px-12 py-16 flex items-center justify-center relative z-10">
-            <div className="bg-[#FECA57] rounded-2xl p-8 shadow-2xl max-w-md w-full">
-              <div className="space-y-6">
-                {/* Feature 1 */}
-                <div className="flex items-start gap-4">
-                  <div className="w-12 h-12 bg-[#003AAD] rounded-full flex items-center justify-center flex-shrink-0">
-                    <Package className="w-6 h-6 text-white" />
+              {/* Category Grid */}
+              <div className="grid grid-cols-2 gap-4">
+                {/* Phone Mounts */}
+                <div className="backdrop-blur-sm bg-white/10 border border-white/20 rounded-xl p-4 hover:bg-white/20 transition-all group cursor-pointer">
+                  <div className="w-10 h-10 bg-white/20 rounded-lg flex items-center justify-center mb-3 group-hover:bg-[#FDB913] transition-all">
+                    <svg className="w-5 h-5 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 18h.01M8 21h8a2 2 0 002-2V5a2 2 0 00-2-2H8a2 2 0 00-2 2v14a2 2 0 002 2z" />
+                    </svg>
                   </div>
-                  <div>
-                    <h3 className="font-bold text-[#003AAD] mb-1">Wide Product Range</h3>
-                    <p className="text-sm text-gray-700">From accessories to performance parts</p>
-                  </div>
+                  <p className="text-white text-sm font-medium">Phone Mounts</p>
                 </div>
 
-                {/* Feature 2 */}
-                <div className="flex items-start gap-4">
-                  <div className="w-12 h-12 bg-[#003AAD] rounded-full flex items-center justify-center flex-shrink-0">
-                    <Truck className="w-6 h-6 text-white" />
+                {/* LED Lighting */}
+                <div className="backdrop-blur-sm bg-white/10 border border-white/20 rounded-xl p-4 hover:bg-white/20 transition-all group cursor-pointer">
+                  <div className="w-10 h-10 bg-white/20 rounded-lg flex items-center justify-center mb-3 group-hover:bg-[#FDB913] transition-all">
+                    <svg className="w-5 h-5 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z" />
+                    </svg>
                   </div>
-                  <div>
-                    <h3 className="font-bold text-[#003AAD] mb-1">Fast Delivery</h3>
-                    <p className="text-sm text-gray-700">Quick shipping across India</p>
-                  </div>
+                  <p className="text-white text-sm font-medium">LED Lighting</p>
                 </div>
 
-                {/* Feature 3 */}
-                <div className="flex items-start gap-4">
-                  <div className="w-12 h-12 bg-[#003AAD] rounded-full flex items-center justify-center flex-shrink-0">
-                    <Star className="w-6 h-6 text-white" />
+                {/* Audio Systems */}
+                <div className="backdrop-blur-sm bg-white/10 border border-white/20 rounded-xl p-4 hover:bg-white/20 transition-all group cursor-pointer">
+                  <div className="w-10 h-10 bg-white/20 rounded-lg flex items-center justify-center mb-3 group-hover:bg-[#FDB913] transition-all">
+                    <svg className="w-5 h-5 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15.536 8.464a5 5 0 010 7.072m2.828-9.9a9 9 0 010 12.728M5.586 15.536a5 5 0 001.414 1.414m3.536-9.192a9 9 0 010 12.728" />
+                    </svg>
                   </div>
-                  <div>
-                    <h3 className="font-bold text-[#003AAD] mb-1">Real Reviews</h3>
-                    <p className="text-sm text-gray-700">Genuine feedback from car owners</p>
-                  </div>
+                  <p className="text-white text-sm font-medium">Audio Systems</p>
                 </div>
 
-                {/* Feature 4 */}
-                <div className="flex items-start gap-4">
-                  <div className="w-12 h-12 bg-[#003AAD] rounded-full flex items-center justify-center flex-shrink-0">
-                    <BadgeIndianRupee className="w-6 h-6 text-white" />
+                {/* Dash Cams */}
+                <div className="backdrop-blur-sm bg-white/10 border border-white/20 rounded-xl p-4 hover:bg-white/20 transition-all group cursor-pointer">
+                  <div className="w-10 h-10 bg-white/20 rounded-lg flex items-center justify-center mb-3 group-hover:bg-[#FDB913] transition-all">
+                    <svg className="w-5 h-5 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 10l4.553-2.276A1 1 0 0121 8.618v6.764a1 1 0 01-1.447.894L15 14M5 18h8a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v8a2 2 0 002 2z" />
+                    </svg>
                   </div>
-                  <div>
-                    <h3 className="font-bold text-[#003AAD] mb-1">Transparent Pricing</h3>
-                    <p className="text-sm text-gray-700">No hidden charges or surprises</p>
-                  </div>
+                  <p className="text-white text-sm font-medium">Dash Cams</p>
                 </div>
               </div>
             </div>
           </div>
-        </div>
-      </section>
 
-      {/* Stats Section */}
-      <section className="py-12 px-4 bg-white">
-        <div className="max-w-6xl mx-auto grid grid-cols-2 lg:grid-cols-4 gap-8">
-          <div className="text-center">
-            <div className="text-[#003AAD] mb-2">
-              <svg className="w-8 h-8 mx-auto" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z" />
-              </svg>
+        </div>
+      </div>
+    </section>
+
+      {/* Stats Cards Section - Outside Hero */}
+      <section className="py-8 px-4 sm:px-6 lg:px-8 bg-white">
+        <div className="max-w-7xl mx-auto">
+          <div className="grid grid-cols-2 lg:grid-cols-4 gap-4">
+            <div className="bg-white rounded-2xl p-6 text-center shadow-lg border border-gray-100">
+              <div className="text-[#003AAD] mb-3 flex justify-center">
+                <Users className="w-8 h-8" />
+              </div>
+              <div className="text-3xl font-regular text-[#003AAD] mb-1">10,000+</div>
+              <div className="text-sm text-gray-600">Pre-Registrations</div>
             </div>
-            <div className="text-3xl font-bold text-[#003AAD] mb-1">10,000+</div>
-            <div className="text-sm text-gray-600">Pre-Registrations</div>
-          </div>
-          
-          <div className="text-center">
-            <div className="text-[#003AAD] mb-2">
-              <svg className="w-8 h-8 mx-auto" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
-              </svg>
+
+            <div className="bg-white rounded-2xl p-6 text-center shadow-lg border border-gray-100">
+              <div className="text-[#003AAD] mb-3 flex justify-center">
+                <Award className="w-8 h-8" />
+              </div>
+              <div className="text-3xl font-regular text-[#003AAD] mb-1">100+</div>
+              <div className="text-sm text-gray-600">Verified Vendors</div>
             </div>
-            <div className="text-3xl font-bold text-[#003AAD] mb-1">500+</div>
-            <div className="text-sm text-gray-600">Verified Vendors</div>
-          </div>
-          
-          <div className="text-center">
-            <div className="text-[#003AAD] mb-2">
-              <svg className="w-8 h-8 mx-auto" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M20 7l-8-4-8 4m16 0l-8 4m8-4v10l-8 4m0-10L4 7m8 4v10M4 7v10l8 4" />
-              </svg>
+
+            <div className="bg-white rounded-2xl p-6 text-center shadow-lg border border-gray-100">
+              <div className="text-[#003AAD] mb-3 flex justify-center">
+                <Package className="w-8 h-8" />
+              </div>
+              <div className="text-3xl font-regular text-[#003AAD] mb-1">10,000+</div>
+              <div className="text-sm text-gray-600">Products Ready</div>
             </div>
-            <div className="text-3xl font-bold text-[#003AAD] mb-1">50,000+</div>
-            <div className="text-sm text-gray-600">Products Ready</div>
-          </div>
-          
-          <div className="text-center">
-            <div className="text-[#003AAD] mb-2">
-              <svg className="w-8 h-8 mx-auto" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M11.049 2.927c.3-.921 1.603-.921 1.902 0l1.519 4.674a1 1 0 00.95.69h4.915c.969 0 1.371 1.24.588 1.81l-3.976 2.888a1 1 0 00-.363 1.118l1.518 4.674c.3.922-.755 1.688-1.538 1.118l-3.976-2.888a1 1 0 00-1.176 0l-3.976 2.888c-.783.57-1.838-.197-1.538-1.118l1.518-4.674a1 1 0 00-.363-1.118l-3.976-2.888c-.784-.57-.38-1.81.588-1.81h4.914a1 1 0 00.951-.69l1.519-4.674z" />
-              </svg>
+
+            <div className="bg-white rounded-2xl p-6 text-center shadow-lg border border-gray-100">
+              <div className="text-[#003AAD] mb-3 flex justify-center">
+                <svg className="w-8 h-8" fill="currentColor" viewBox="0 0 20 20">
+                  <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
+                </svg>
+              </div>
+              <div className="text-3xl font-regular text-[#003AAD] mb-1">4.8/5</div>
+              <div className="text-sm text-gray-600">Beta Rating</div>
             </div>
-            <div className="text-3xl font-bold text-[#003AAD] mb-1">4.8/5</div>
-            <div className="text-sm text-gray-600">Best Rating</div>
           </div>
         </div>
       </section>
