@@ -1,5 +1,5 @@
 import Image from 'next/image';
-import { Instagram, Linkedin } from 'lucide-react';
+import { Instagram, Linkedin, Facebook } from 'lucide-react';
 
 export default function Footer() {
   return (
@@ -24,6 +24,15 @@ export default function Footer() {
           <div>
             <h3 className="text-white font-semibold mb-4">Stay Connected</h3>
             <div className="flex gap-4">
+              <a
+                href="https://www.facebook.com/share/1D1Niwp13i/"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="w-10 h-10 bg-white/10 hover:bg-[#FDB913] rounded-full flex items-center justify-center transition-colors"
+                aria-label="Facebook"
+              >
+                <Facebook className="w-5 h-5" />
+              </a>
               <a
                 href="https://www.instagram.com/exaltride?igsh=MTgwd2c0aWNmM2VkZA%3D%3D&utm_source=qr"
                 target="_blank"
