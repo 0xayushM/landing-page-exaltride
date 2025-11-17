@@ -81,6 +81,9 @@ export default function HeroSection({ onGetEarlyAccess }: HeroSectionProps) {
                 Become a Vendor
               </a>
             </div>
+            <p className="text-xs text-gray-300 mt-2">
+              *on shopping above ₹2500
+            </p>
           </div>
 
           {/* Right Card - Glassmorphism */}

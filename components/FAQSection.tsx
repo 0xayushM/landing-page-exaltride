@@ -78,6 +78,11 @@ export default function FAQSection() {
                   <p className="text-gray-600 leading-relaxed">
                     {faq.answer}
                   </p>
+                  {index === 2 && (
+                    <p className="text-xs text-gray-400 mt-2">
+                      *on shopping above ₹2500
+                    </p>
+                  )}
                 </div>
               )}
             </div>
