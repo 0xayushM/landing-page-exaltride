@@ -6,49 +6,42 @@ export default function PopularCategories() {
       name: 'Audio Systems',
       description: 'Speakers, subwoofers, amplifiers',
       products: '2,500+ products',
-      bgColor: 'bg-purple-600',
       image: '/audio.png',
     },
     {
       name: 'Seat Covers',
       description: 'Premium leather, fabric, custom fit',
       products: '5,000+ products',
-      bgColor: 'bg-blue-600',
       image: '/seat.png',
     },
     {
       name: 'LED Lights',
       description: 'Headlights, fog lamps, decorative',
       products: '3,500+ products',
-      bgColor: 'bg-orange-600',
       image: '/lights.png',
     },
     {
       name: 'Exterior Styling',
       description: 'Body kits, spoilers, chrome',
       products: '3,000+ products',
-      bgColor: 'bg-red-600',
       image: '/exterior.png',
     },
     {
       name: 'Car Care',
       description: 'Cleaning, polishing, tools',
       products: '2,000+ products',
-      bgColor: 'bg-green-600',
       image: '/car_care.png',
     },
     {
       name: 'Electronics',
       description: 'Dash cams, chargers, GPS',
       products: '1,800+ products',
-      bgColor: 'bg-indigo-600',
       image: '/electronix.png',
     },
     {
       name: 'Protection',
       description: 'Floor mats, PPF, ceramic coating',
       products: '2,200+ products',
-      bgColor: 'bg-teal-600',
       image: '/protection.png',
     },
   ];
@@ -77,7 +70,7 @@ export default function PopularCategories() {
               >
                 {/* Image */}
                 <div className="flex items-center justify-center mb-4">
-                  <div className={`w-16 h-16 ${category.bgColor} rounded-2xl p-2 flex items-center justify-center overflow-hidden group-hover:scale-110 transition-transform`}>
+                  <div className={`w-16 h-16 rounded-2xl flex items-center justify-center overflow-hidden group-hover:scale-110 transition-transform`}>
                     <Image 
                       src={category.image} 
                       alt={category.name} 
@@ -115,7 +108,7 @@ export default function PopularCategories() {
               >
                 {/* Image */}
                 <div className="flex items-center justify-center mb-4">
-                  <div className={`w-16 h-16 ${category.bgColor} rounded-2xl p-2 flex items-center justify-center overflow-hidden group-hover:scale-110 transition-transform`}>
+                  <div className={`w-16 h-16 rounded-2xl flex items-center justify-center overflow-hidden group-hover:scale-110 transition-transform`}>
                     <Image 
                       src={category.image} 
                       alt={category.name} 
