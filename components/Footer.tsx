@@ -1,5 +1,5 @@
 import Image from 'next/image';
-import { Instagram, Linkedin, Facebook } from 'lucide-react';
+import { Instagram, Linkedin, Facebook, Twitter } from 'lucide-react';
 
 export default function Footer() {
   return (
@@ -50,6 +50,15 @@ export default function Footer() {
                 aria-label="LinkedIn"
               >
                 <Linkedin className="w-5 h-5" />
+              </a>
+              <a
+                href="https://x.com/exaltride?s=11"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="w-10 h-10 bg-white/10 hover:bg-[#FDB913] rounded-full flex items-center justify-center transition-colors"
+                aria-label="Twitter"
+              >
+                <Twitter className="w-5 h-5" />
               </a>
             </div>
           </div>
