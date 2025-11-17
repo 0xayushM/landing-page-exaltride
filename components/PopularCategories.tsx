@@ -93,35 +93,70 @@ export default function PopularCategories() {
         </div>
 
         {/* Categories Grid */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
-          {categories.map((category, index) => (
-            <div
-              key={index}
-              className="bg-white rounded-2xl p-6 border border-gray-200 hover:shadow-lg transition-all duration-300 cursor-pointer group"
-            >
-              {/* Icon */}
-              <div className="flex items-center justify-center">
-                <div className={`w-16 h-16 ${category.bgColor} rounded-2xl flex items-center justify-center mb-4 group-hover:scale-110 transition-transform`}>
-                {category.icon}
+        <div>
+          {/* First Row - 4 items */}
+          <div className="grid grid-cols-1 lg:grid-cols-4 gap-6 mb-6">
+            {categories.slice(0, 4).map((category, index) => (
+              <div
+                key={index}
+                className="bg-white rounded-2xl p-6 border border-gray-200 hover:shadow-lg transition-all duration-300 cursor-pointer group"
+              >
+                {/* Icon */}
+                <div className="flex items-center justify-center">
+                  <div className={`w-16 h-16 ${category.bgColor} rounded-2xl flex items-center justify-center mb-4 group-hover:scale-110 transition-transform`}>
+                  {category.icon}
+                </div>
+                </div>
+
+                {/* Category Name */}
+                <h3 className="text-lg text-center font-semibold text-[#001d4a] mb-2">
+                  {category.name}
+                </h3>
+
+                {/* Description */}
+                <p className="text-sm text-gray-600 text-center mb-3">
+                  {category.description}
+                </p>
+
+                {/* Product Count */}
+                <p className="text-sm font-medium text-[#003AAD] text-center">
+                  {category.products}
+                </p>
               </div>
+            ))}
+          </div>
+
+          {/* Second Row - 3 items centered */}
+          <div className="flex flex-wrap justify-center gap-6">
+            {categories.slice(4).map((category, index) => (
+              <div
+                key={index + 4}
+                className="bg-white rounded-2xl p-6 border border-gray-200 hover:shadow-lg transition-all duration-300 cursor-pointer group w-full sm:w-[calc(50%-0.75rem)] lg:w-[calc(25%-1.125rem)]"
+              >
+                {/* Icon */}
+                <div className="flex items-center justify-center">
+                  <div className={`w-16 h-16 ${category.bgColor} rounded-2xl flex items-center justify-center mb-4 group-hover:scale-110 transition-transform`}>
+                  {category.icon}
+                </div>
+                </div>
+
+                {/* Category Name */}
+                <h3 className="text-lg text-center font-semibold text-[#001d4a] mb-2">
+                  {category.name}
+                </h3>
+
+                {/* Description */}
+                <p className="text-sm text-gray-600 text-center mb-3">
+                  {category.description}
+                </p>
+
+                {/* Product Count */}
+                <p className="text-sm font-medium text-[#003AAD] text-center">
+                  {category.products}
+                </p>
               </div>
-
-              {/* Category Name */}
-              <h3 className="text-lg text-center font-semibold text-[#001d4a] mb-2">
-                {category.name}
-              </h3>
-
-              {/* Description */}
-              <p className="text-sm text-gray-600 text-center mb-3">
-                {category.description}
-              </p>
-
-              {/* Product Count */}
-              <p className="text-sm font-medium text-[#003AAD] text-center">
-                {category.products}
-              </p>
-            </div>
-          ))}
+            ))}
+          </div>
         </div>
       </div>
     </section>
