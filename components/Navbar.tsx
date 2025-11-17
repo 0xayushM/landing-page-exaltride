@@ -1,5 +1,4 @@
 import Image from 'next/image';
-import Link from 'next/link';
 
 interface NavbarProps {
   onGetEarlyAccess: () => void;
@@ -17,18 +16,6 @@ export default function Navbar({ onGetEarlyAccess }: NavbarProps) {
           
           {/* Navigation Links */}
           <div className="hidden md:flex items-center space-x-8">
-            <Link href="#features" className="text-gray-700 hover:text-[#003AAD] transition-colors text-sm font-medium">
-              Features
-            </Link>
-            <Link href="#how-it-works" className="text-gray-700 hover:text-[#003AAD] transition-colors text-sm font-medium">
-              How It Works
-            </Link>
-            <Link href="https://vendor.exaltride.com" className="text-gray-700 hover:text-[#003AAD] transition-colors text-sm font-medium">
-              For Vendors
-            </Link>
-            <Link href="#faq" className="text-gray-700 hover:text-[#003AAD] transition-colors text-sm font-medium">
-              FAQ
-            </Link>
             <button
               onClick={onGetEarlyAccess}
               className="px-5 py-2 text-sm font-semibold text-[#003AAD] bg-[#FDB913] rounded-md hover:bg-[#f5b400] transition-colors"

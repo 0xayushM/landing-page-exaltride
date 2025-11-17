@@ -26,13 +26,13 @@ export default function PlatformPreview() {
             </div>
 
             {/* Right Side - Device Mockups */}
-            <div className="relative h-[400px]">
+            <div className="relative h-[220px] md:h-[400px]">
               {/* Laptop Image */}
               <div className="absolute bottom-0 right-0 w-full lg:w-[110%] z-10">
                 <Image
                   src="/laptop.png"
                   alt="Desktop Platform View"
-                  width={800}
+                  width={600}
                   height={500}
                   className="w-full h-auto drop-shadow-2xl"
                   priority
