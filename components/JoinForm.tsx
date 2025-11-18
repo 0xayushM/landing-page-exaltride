@@ -79,7 +79,7 @@ export default function JoinForm() {
       const data = await response.json();
 
       if (response.ok) {
-        setSubmitMessage('✓ Successfully joined! Check your email for details.');
+        setSubmitMessage('✓ Successfully joined!');
         setFormData({ name: '', email: '', phone: '', carModel: '' });
         setCustomCarModel('');
       } else {
