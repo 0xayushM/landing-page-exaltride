@@ -155,12 +155,12 @@ export default function JoinForm() {
 
           {/* Badges */}
           <div className="flex flex-wrap justify-center gap-3 mb-8">
-            <div className="inline-flex items-center gap-1.5 bg-blue-50 text-[#003AAD] px-3 py-1.5 rounded-lg text-xs font-medium border border-blue-100">
+            <div className="inline-flex items-center gap-1.5 bg-blue-50 text-[#003AAD] px-3 py-1.5 rounded-lg text-xs font-medium border border-blue-100 relative group/badge">
               <svg className="w-3.5 h-3.5" fill="currentColor" viewBox="0 0 20 20">
                 <path d="M8.433 7.418c.155-.103.346-.196.567-.267v1.698a2.305 2.305 0 01-.567-.267C8.07 8.34 8 8.114 8 8c0-.114.07-.34.433-.582zM11 12.849v-1.698c.22.071.412.164.567.267.364.243.433.468.433.582 0 .114-.07.34-.433.582a2.305 2.305 0 01-.567.267z" />
                 <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm1-13a1 1 0 10-2 0v.092a4.535 4.535 0 00-1.676.662C6.602 6.234 6 7.009 6 8c0 .99.602 1.765 1.324 2.246.48.32 1.054.545 1.676.662v1.941c-.391-.127-.68-.317-.843-.504a1 1 0 10-1.51 1.31c.562.649 1.413 1.076 2.353 1.253V15a1 1 0 102 0v-.092a4.535 4.535 0 001.676-.662C13.398 13.766 14 12.991 14 12c0-.99-.602-1.765-1.324-2.246A4.535 4.535 0 0011 9.092V7.151c.391.127.68.317.843.504a1 1 0 101.511-1.31c-.563-.649-1.413-1.076-2.354-1.253V5z" clipRule="evenodd" />
               </svg>
-              ₹500* Credits
+              ₹500<span className="relative group/tooltip inline-block">*<span className="absolute bottom-full left-1/2 -translate-x-1/2 mb-2 px-3 py-1.5 bg-gray-900 text-white text-xs rounded-lg opacity-0 invisible group-hover/tooltip:opacity-100 group-hover/tooltip:visible transition-all whitespace-nowrap z-50 pointer-events-none">on shopping above ₹2500</span></span> Credits
             </div>
             <div className="inline-flex items-center gap-1.5 bg-green-50 text-green-700 px-3 py-1.5 rounded-lg text-xs font-medium border border-green-100">
               <svg className="w-3.5 h-3.5" fill="currentColor" viewBox="0 0 20 20">

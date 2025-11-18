@@ -70,9 +70,9 @@ export default function HeroSection({ onGetEarlyAccess }: HeroSectionProps) {
             <div className="flex flex-col sm:flex-row gap-4 pt-4">
               <button
                 onClick={onGetEarlyAccess}
-                className="inline-flex items-center justify-center px-6 py-3.5 text-base font-semibold text-[#001d4a] bg-[#FDB913] rounded-lg hover:bg-[#f5b400] transition-all shadow-lg hover:shadow-xl"
+                className="inline-flex items-center justify-center px-6 py-3.5 text-base font-semibold text-[#001d4a] bg-[#FDB913] rounded-lg hover:bg-[#f5b400] transition-all shadow-lg hover:shadow-xl group/btn relative"
               >
-                Get Early Access + ₹500* Credits
+                Get Early Access + ₹500<span className="relative group/tooltip">* <span className="absolute bottom-full left-1/2 -translate-x-1/2 mb-2 px-3 py-1.5 bg-gray-900 text-white text-xs rounded-lg opacity-0 invisible group-hover/tooltip:opacity-100 group-hover/tooltip:visible transition-all whitespace-nowrap z-50">on shopping above ₹2500</span></span> {" "}Credits
               </button>
               <a
                 href="https://vendor.exaltride.com"
@@ -81,9 +81,6 @@ export default function HeroSection({ onGetEarlyAccess }: HeroSectionProps) {
                 Become a Vendor
               </a>
             </div>
-            <p className="text-xs text-gray-300 mt-2">
-              *on shopping above ₹2500
-            </p>
           </div>
 
           {/* Right Card - Glassmorphism */}
