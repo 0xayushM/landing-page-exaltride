@@ -97,13 +97,13 @@ export default function OfferPopup({ onGetEarlyAccess }: OfferPopupProps) {
       {/* Popup */}
       <div className="fixed inset-0 z-50 flex items-center justify-center p-4 pointer-events-none">
         <div 
-          className="relative max-w-4xl max-h-[80vh] bg-[#002B5C] rounded-3xl shadow-2xl overflow-hidden pointer-events-auto animate-scaleIn"
+          className="relative max-w-4xl max-h-[90vh] md:max-h-[80vh] bg-[#002B5C] rounded-3xl shadow-2xl overflow-y-auto pointer-events-auto animate-scaleIn"
           onClick={(e) => e.stopPropagation()}
         >
           {/* Close Button */}
           <button
             onClick={handleClose}
-            className="absolute top-4 right-4 z-10 w-10 h-10 rounded-full bg-white/10 hover:bg-white/20 backdrop-blur-sm flex items-center justify-center transition-all group"
+            className="absolute top-4 right-4 z-20 w-10 h-10 rounded-full bg-white/10 hover:bg-white/20 backdrop-blur-sm flex items-center justify-center transition-all group"
           >
             <X className="w-5 h-5 text-white group-hover:rotate-90 transition-transform duration-300" />
           </button>
@@ -206,8 +206,8 @@ export default function OfferPopup({ onGetEarlyAccess }: OfferPopupProps) {
               <div className="absolute top-0 bottom-0 left-1/2 w-32 bg-gradient-to-r from-[#002B5C] via-[#002B5C]/50 to-transparent -translate-x-1/2 z-0"></div>
             </div>
 
-            {/* Right Side - Image */}
-            <div className="relative h-[60vh] md:h-[70vh] bg-gradient-to-br from-[#002B5C] to-[#001d4a]">
+            {/* Right Side - Image (Desktop Only) */}
+            <div className="hidden md:block relative h-[70vh] bg-gradient-to-br from-[#002B5C] to-[#001d4a]">
               <Image
                 src="/popup.png"
                 alt="Offer"
