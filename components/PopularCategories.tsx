@@ -62,7 +62,7 @@ export default function PopularCategories() {
         {/* Categories Grid */}
         <div>
           {/* First Row - 4 items */}
-          <div className="grid grid-cols-1 lg:grid-cols-4 gap-6 mb-6">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-6">
             {categories.slice(0, 4).map((category, index) => (
               <div
                 key={index}

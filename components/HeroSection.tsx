@@ -38,7 +38,7 @@ export default function HeroSection({ onGetEarlyAccess }: HeroSectionProps) {
 
   return (
     <>
-    <section className="relative min-h-[90vh] pt-16 pb-16 overflow-hidden">
+    <section className="relative min-h-[90vh] pt-24 pb-16 overflow-hidden">
       {/* Background Image */}
       <div 
         className="absolute inset-0 bg-cover bg-center bg-no-repeat"
@@ -52,8 +52,8 @@ export default function HeroSection({ onGetEarlyAccess }: HeroSectionProps) {
       <div className="absolute inset-0 bg-[#001d4a]/85" />
 
       {/* Content Container */}
-      <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12 items-start min-h-[calc(100vh-200px)]">
+      <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex items-center min-h-[calc(90vh-64px)]">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12 items-center w-full">
           
           {/* Left Content */}
           <div className="text-white space-y-6 lg:space-y-8">
