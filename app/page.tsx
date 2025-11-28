@@ -12,6 +12,7 @@ import FinalCTA from '@/components/FinalCTA';
 import PlatformPreview from '@/components/PlatformPreview';
 import CTASection from '@/components/CTASection';
 import Footer from '@/components/Footer';
+import OfferPopup from '@/components/OfferPopup';
 
 export default function Home() {
   // Track visitor on page load
@@ -89,6 +90,7 @@ export default function Home() {
       {/* <PlatformPreview /> */}
       {/* <CTASection onGetEarlyAccess={scrollToForm} /> */}
       <Footer />
+      <OfferPopup onGetEarlyAccess={scrollToForm} />
     </div>
   );
 }
