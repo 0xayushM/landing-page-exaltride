@@ -14,10 +14,11 @@ export default function OfferPopup({ onGetEarlyAccess }: OfferPopupProps) {
   const [triggersUsed, setTriggersUsed] = useState<Set<string>>(new Set());
   const [clickCount, setClickCount] = useState(0);
   const [hasScrolled, setHasScrolled] = useState(false);
+  const [hasClaimed, setHasClaimed] = useState(false);
 
   // Timer effect - runs when popup is closed and timer hasn't been used
   useEffect(() => {
-    if (showCount >= 3 || isVisible || triggersUsed.has('timer')) return;
+    if (showCount >= 3 || isVisible || triggersUsed.has('timer') || hasClaimed) return;
 
     const timeoutId = setTimeout(() => {
       setIsVisible(true);
@@ -26,11 +27,11 @@ export default function OfferPopup({ onGetEarlyAccess }: OfferPopupProps) {
     }, 5000);
 
     return () => clearTimeout(timeoutId);
-  }, [showCount, isVisible, triggersUsed]);
+  }, [showCount, isVisible, triggersUsed, hasClaimed]);
 
   // Scroll effect - persistent listener
   useEffect(() => {
-    if (showCount >= 3 || triggersUsed.has('scroll')) return;
+    if (showCount >= 3 || triggersUsed.has('scroll') || hasClaimed) return;
 
     const handleScroll = () => {
       if (!hasScrolled && window.scrollY > 100) {
@@ -46,11 +47,11 @@ export default function OfferPopup({ onGetEarlyAccess }: OfferPopupProps) {
 
     window.addEventListener('scroll', handleScroll);
     return () => window.removeEventListener('scroll', handleScroll);
-  }, [showCount, isVisible, triggersUsed, hasScrolled]);
+  }, [showCount, isVisible, triggersUsed, hasScrolled, hasClaimed]);
 
   // Click effect - persistent listener
   useEffect(() => {
-    if (showCount >= 3 || triggersUsed.has('click')) return;
+    if (showCount >= 3 || triggersUsed.has('click') || hasClaimed) return;
 
     const handleClick = () => {
       setClickCount(prev => {
@@ -67,7 +68,7 @@ export default function OfferPopup({ onGetEarlyAccess }: OfferPopupProps) {
 
     window.addEventListener('click', handleClick);
     return () => window.removeEventListener('click', handleClick);
-  }, [showCount, isVisible, triggersUsed, clickCount]);
+  }, [showCount, isVisible, triggersUsed, clickCount, hasClaimed]);
 
   const handleClose = () => {
     setIsVisible(false);
@@ -77,8 +78,7 @@ export default function OfferPopup({ onGetEarlyAccess }: OfferPopupProps) {
 
   const handleClaim = () => {
     setIsVisible(false);
-    setClickCount(0);
-    setHasScrolled(false); // Reset scroll state
+    setHasClaimed(true); // Mark as claimed to stop future popups
     onGetEarlyAccess();
   };
 
@@ -118,7 +118,7 @@ export default function OfferPopup({ onGetEarlyAccess }: OfferPopupProps) {
 
               {/* Heading */}
               <h2 className="text-2xl md:text-3xl font-bold text-white mb-2">
-                Get <span className="text-[#FDB913]">₹500 Free Credits</span>
+                Get <span className="text-[#FDB913]">₹500* Free Credits</span>
               </h2>
               <p className="text-gray-300 text-xs md:text-sm mb-4">
                 Sign up now and unlock instant rewards + premium benefits
@@ -133,7 +133,7 @@ export default function OfferPopup({ onGetEarlyAccess }: OfferPopupProps) {
                 </div>
                 <div className="text-center">
                   <p className="text-gray-300 text-xs mb-1">WELCOME BONUS</p>
-                  <div className="text-3xl font-bold text-[#FDB913] mb-1">₹500</div>
+                  <div className="text-3xl font-bold text-[#FDB913] mb-1">₹500*</div>
                   <p className="text-[#FDB913] text-xs flex items-center justify-center gap-1">
                     <Sparkles className="w-3 h-3" />
                     Credited instantly upon signup
@@ -184,7 +184,7 @@ export default function OfferPopup({ onGetEarlyAccess }: OfferPopupProps) {
               >
                 Claim Your
                 <span className="inline-flex items-center justify-center px-3 py-0.5 bg-[#002B5C] text-[#FDB913] rounded-lg font-bold text-sm">
-                  ₹500
+                  ₹500*
                 </span>
                 Free
                 <svg className="w-4 h-4 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">

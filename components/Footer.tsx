@@ -69,6 +69,9 @@ export default function Footer() {
           <div className="flex flex-col md:flex-row justify-between items-center gap-4 text-sm text-gray-400">
             <p>&copy; 2025 Exaltride. All rights reserved.</p>
           </div>
+          <div className="mt-4 text-xs text-gray-500">
+            <p>* ₹500 credits applicable on orders above ₹2,500</p>
+          </div>
         </div>
       </div>
     </footer>

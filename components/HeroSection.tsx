@@ -167,9 +167,9 @@ export default function HeroSection({ onGetEarlyAccess }: HeroSectionProps) {
                   <Gift className="w-5 h-5 text-[#001d4a]" />
                   <span className="text-[#001d4a] font-bold text-sm">WELCOME BONUS</span>
                 </div>
-                <div className="text-5xl font-bold text-[#001d4a] mb-2">₹500</div>
+                <div className="text-5xl font-bold text-[#001d4a] mb-2">₹500*</div>
                 <div className="text-[#001d4a] font-semibold mb-2">FREE Credits</div>
-                <p className="text-[#001d4a]/80 text-xs">Use on your first purchase—no minimum order required!</p>
+                <p className="text-[#001d4a]/80 text-xs">Use on your first purchase*</p>
               </div>
 
               {/* Early Access Section */}
@@ -240,7 +240,7 @@ export default function HeroSection({ onGetEarlyAccess }: HeroSectionProps) {
                 onClick={onGetEarlyAccess}
                 className="w-full bg-gradient-to-r from-[#FDB913] to-[#f5a800] text-[#001d4a] font-bold py-4 rounded-xl hover:shadow-lg hover:shadow-[#FDB913]/50 transition-all duration-300 text-base"
               >
-                Claim ₹500 Credits + Founder's Pass
+                Claim ₹500* Credits + Founder's Pass
               </button>
             </div>
           </div>
