@@ -1,13 +1,44 @@
-import { Sparkles, Shield, Users, Award, Package } from 'lucide-react';
+'use client';
+
+import { Sparkles, Shield, Users, Award, Package, ShoppingCart, Truck, Wrench, Gift, Clock } from 'lucide-react';
+import { useState, useEffect } from 'react';
 
 interface HeroSectionProps {
   onGetEarlyAccess: () => void;
 }
 
 export default function HeroSection({ onGetEarlyAccess }: HeroSectionProps) {
+  // Countdown timer state
+  const [timeLeft, setTimeLeft] = useState({
+    days: 18,
+    hours: 8,
+    minutes: 0,
+    seconds: 0
+  });
+
+  useEffect(() => {
+    const targetDate = new Date('2025-12-14T00:00:00').getTime();
+    
+    const timer = setInterval(() => {
+      const now = new Date().getTime();
+      const difference = targetDate - now;
+
+      if (difference > 0) {
+        setTimeLeft({
+          days: Math.floor(difference / (1000 * 60 * 60 * 24)),
+          hours: Math.floor((difference % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60)),
+          minutes: Math.floor((difference % (1000 * 60 * 60)) / (1000 * 60)),
+          seconds: Math.floor((difference % (1000 * 60)) / 1000)
+        });
+      }
+    }, 1000);
+
+    return () => clearInterval(timer);
+  }, []);
+
   return (
     <>
-    <section className="relative min-h-screen pt-20 pb-16 overflow-hidden">
+    <section className="relative min-h-[90vh] pt-16 pb-16 overflow-hidden">
       {/* Background Image */}
       <div 
         className="absolute inset-0 bg-cover bg-center bg-no-repeat"
@@ -18,14 +49,14 @@ export default function HeroSection({ onGetEarlyAccess }: HeroSectionProps) {
       />
       
       {/* Dark Overlay */}
-      <div className="absolute inset-0 bg-[#001d4a]/80" />
+      <div className="absolute inset-0 bg-[#001d4a]/85" />
 
       {/* Content Container */}
       <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center min-h-[calc(100vh-200px)]">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12 items-start min-h-[calc(100vh-200px)]">
           
           {/* Left Content */}
-          <div className="text-white space-y-8">
+          <div className="text-white space-y-6 lg:space-y-8">
             {/* Launch Badge */}
             <div className="inline-flex items-center gap-2 bg-[#FDB913] text-[#001d4a] px-4 py-2.5 rounded-lg text-sm font-semibold">
               <Sparkles className="w-4 h-4" />
@@ -34,8 +65,8 @@ export default function HeroSection({ onGetEarlyAccess }: HeroSectionProps) {
 
             {/* Heading */}
             <h1 className="text-4xl sm:text-5xl lg:text-6xl leading-tight">
-              <span className="font-light  block mb-2">Your Car Deserves</span>
-              <span className="font-regular text-[#FDB913]">Better<br />Accessories.</span>
+              <span className="font-light block mb-2">Your Car Deserves</span>
+              <span className="font-semibold text-[#FDB913]">Better<br />Accessories.</span>
             </h1>
 
             {/* Description */}
@@ -44,35 +75,36 @@ export default function HeroSection({ onGetEarlyAccess }: HeroSectionProps) {
             </p>
 
             {/* Stats */}
-            <div className="flex flex-wrap gap-6 pt-4">
+            <div className="flex flex-wrap gap-6 pt-2">
               <div className="flex items-center gap-3">
                 <Users className="w-6 h-6 text-[#FDB913]" />
                 <div>
-                  <div className="text-xl font-regular">10,000+ Pre-</div>
+                  <div className="text-xl font-semibold">10,000+ Pre-</div>
                   <div className="text-sm text-gray-300">Registrations</div>
                 </div>
               </div>
               <div className="flex items-center gap-3">
                 <Award className="w-6 h-6 text-[#FDB913]" />
                 <div>
-                  <div className="text-xl font-regular">100+ Verified Vendors</div>
+                  <div className="text-xl font-semibold">100+ Verified</div>
+                  <div className="text-sm text-gray-300">Vendors</div>
                 </div>
               </div>
               <div className="flex items-center gap-3">
                 <Package className="w-6 h-6 text-[#FDB913]" />
                 <div>
-                  <div className="text-xl font-regular">10,000+ Products</div>
+                  <div className="text-xl font-semibold">10,000+ Products</div>
                 </div>
               </div>
             </div>
 
             {/* CTA Buttons */}
-            <div className="flex flex-col sm:flex-row gap-4 pt-4">
+            <div className="flex flex-col sm:flex-row gap-4 pt-2">
               <button
                 onClick={onGetEarlyAccess}
-                className="inline-flex items-center justify-center px-6 py-3.5 text-base font-semibold text-[#001d4a] bg-[#FDB913] rounded-lg hover:bg-[#f5b400] transition-all shadow-lg hover:shadow-xl group/btn relative"
+                className="inline-flex items-center justify-center px-6 py-3.5 text-base font-semibold text-[#001d4a] bg-[#FDB913] rounded-lg hover:bg-[#f5b400] transition-all shadow-lg hover:shadow-xl"
               >
-                Get Early Access + ₹500<span className="relative group/tooltip">* <span className="absolute bottom-full left-1/2 -translate-x-1/2 mb-2 px-3 py-1.5 bg-gray-900 text-white text-xs rounded-lg opacity-0 invisible group-hover/tooltip:opacity-100 group-hover/tooltip:visible transition-all whitespace-nowrap z-50">on shopping above ₹2500</span></span> {" "}Credits
+                Get Early Access + ₹500*Credits
               </button>
               <a
                 href="https://vendor.exaltride.com"
@@ -81,111 +113,141 @@ export default function HeroSection({ onGetEarlyAccess }: HeroSectionProps) {
                 Become a Vendor
               </a>
             </div>
+
+            {/* Process Flow */}
+            <div className="hidden lg:flex items-center justify-between pt-8 max-w-2xl">
+              <div className="flex flex-col items-center text-center">
+                <div className="w-16 h-16 rounded-full bg-[#FDB913]/20 border-2 border-[#FDB913] flex items-center justify-center mb-3">
+                  <ShoppingCart className="w-7 h-7 text-[#FDB913]" />
+                </div>
+                <p className="text-sm font-semibold">Place Your Order</p>
+                <p className="text-xs text-gray-400 mt-1">Browse & buy in clicks</p>
+              </div>
+              
+              <div className="flex-1 h-0.5 bg-gradient-to-r from-[#FDB913] to-[#FDB913]/30 mx-4 mt-[-40px]" />
+              
+              <div className="flex flex-col items-center text-center">
+                <div className="w-16 h-16 rounded-full bg-[#FDB913]/20 border-2 border-[#FDB913] flex items-center justify-center mb-3">
+                  <Truck className="w-7 h-7 text-[#FDB913]" />
+                </div>
+                <p className="text-sm font-semibold">Fast, Tracked Delivery</p>
+                <p className="text-xs text-gray-400 mt-1">Real-time updates</p>
+              </div>
+              
+              <div className="flex-1 h-0.5 bg-gradient-to-r from-[#FDB913]/30 to-[#FDB913] mx-4 mt-[-40px]" />
+              
+              <div className="flex flex-col items-center text-center">
+                <div className="w-16 h-16 rounded-full bg-[#FDB913]/20 border-2 border-[#FDB913] flex items-center justify-center mb-3">
+                  <Wrench className="w-7 h-7 text-[#FDB913]" />
+                </div>
+                <p className="text-sm font-semibold">Expert Installation</p>
+                <p className="text-xs text-gray-400 mt-1">At your doorstep</p>
+              </div>
+            </div>
           </div>
 
-          {/* Right Card - Glassmorphism */}
-          <div className="hidden lg:flex justify-center items-center">
-            <div className="backdrop-blur-md bg-white/10 border border-white/20 rounded-3xl p-8 shadow-2xl max-w-md w-full">
+          {/* Right Card - Founder's Pass */}
+          <div className="flex justify-center items-start lg:pt-8">
+            <div className="backdrop-blur-md bg-gradient-to-br from-slate-800/60 to-slate-900/60 border border-white/20 rounded-3xl p-6 shadow-2xl max-w-md w-full">
               {/* Card Header */}
-              <div className="flex items-start gap-4 mb-6">
-                <div className="w-12 h-12 bg-[#FDB913] rounded-xl flex items-center justify-center flex-shrink-0">
-                  <Shield className="w-6 h-6 text-[#001d4a]" />
+              <div className="flex items-center justify-between mb-6">
+                <div className="flex items-center gap-2">
+                  <Gift className="w-5 h-5 text-[#FDB913]" />
+                  <span className="text-white font-semibold text-sm">FOUNDER'S PASS</span>
                 </div>
-                <div className="text-white">
-                  <h3 className="text-xl font-regular mb-1">Premium Accessories</h3>
-                  <p className="text-sm text-gray-200">10,000+ verified products for your car</p>
+                <div className="flex gap-2">
+                  <span className="px-2.5 py-1 bg-emerald-500/20 text-emerald-400 text-xs font-semibold rounded-md border border-emerald-500/30">ACTIVE</span>
+                  <span className="px-2.5 py-1 bg-amber-500/20 text-amber-400 text-xs font-semibold rounded-md border border-amber-500/30">LIMITED</span>
+                </div>
+              </div>
+
+              {/* Welcome Bonus Card */}
+              <div className="bg-gradient-to-br from-[#FDB913] to-[#f5a800] rounded-2xl p-6 mb-6 shadow-lg">
+                <div className="flex items-center gap-2 mb-3">
+                  <Gift className="w-5 h-5 text-[#001d4a]" />
+                  <span className="text-[#001d4a] font-bold text-sm">WELCOME BONUS</span>
+                </div>
+                <div className="text-5xl font-bold text-[#001d4a] mb-2">₹500</div>
+                <div className="text-[#001d4a] font-semibold mb-2">FREE Credits</div>
+                <p className="text-[#001d4a]/80 text-xs">Use on your first purchase—no minimum order required!</p>
+              </div>
+
+              {/* Early Access Section */}
+              <div className="mb-6">
+                <p className="text-gray-400 text-xs mb-2">Early Access Unlock</p>
+                <div className="bg-slate-800/50 border border-slate-700/50 rounded-xl p-4 mb-3">
+                  <div className="text-white text-2xl font-bold mb-1">Only 900</div>
+                  <div className="text-[#FDB913] font-semibold">Passes Left</div>
+                </div>
+
+                {/* Countdown Timer */}
+                <div className="mb-4">
+                  <div className="flex items-center gap-2 mb-3">
+                    <Clock className="w-4 h-4 text-amber-400" />
+                    <span className="text-gray-400 text-xs font-semibold">OFFER EXPIRES IN</span>
+                  </div>
+                  <div className="flex gap-2 justify-center">
+                    <div className="flex flex-col items-center bg-slate-800/50 border border-slate-700/50 rounded-lg px-2.5 py-2 min-w-[55px]">
+                      <div className="text-2xl font-bold text-white">{String(timeLeft.days).padStart(2, '0')}</div>
+                      <div className="text-xs text-gray-400 uppercase">Days</div>
+                    </div>
+                    <div className="flex flex-col items-center bg-slate-800/50 border border-slate-700/50 rounded-lg px-2.5 py-2 min-w-[55px]">
+                      <div className="text-2xl font-bold text-white">{String(timeLeft.hours).padStart(2, '0')}</div>
+                      <div className="text-xs text-gray-400 uppercase">Hrs</div>
+                    </div>
+                    <div className="flex flex-col items-center bg-slate-800/50 border border-slate-700/50 rounded-lg px-2.5 py-2 min-w-[55px]">
+                      <div className="text-2xl font-bold text-white">{String(timeLeft.minutes).padStart(2, '0')}</div>
+                      <div className="text-xs text-gray-400 uppercase">Min</div>
+                    </div>
+                    <div className="flex flex-col items-center bg-slate-800/50 border border-slate-700/50 rounded-lg px-2.5 py-2 min-w-[55px]">
+                      <div className="text-2xl font-bold text-white">{String(timeLeft.seconds).padStart(2, '0')}</div>
+                      <div className="text-xs text-gray-400 uppercase">Sec</div>
+                    </div>
+                  </div>
                 </div>
               </div>
 
-              {/* Category Grid */}
-              <div className="grid grid-cols-2 gap-4">
-                {/* Phone Mounts */}
-                <div className="backdrop-blur-sm bg-white/10 border border-white/20 rounded-xl p-4 hover:bg-white/20 transition-all group cursor-pointer">
-                  <div className="w-10 h-10 bg-white/20 rounded-lg flex items-center justify-center mb-3 group-hover:bg-[#FDB913] transition-all">
-                    <svg className="w-5 h-5 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 18h.01M8 21h8a2 2 0 002-2V5a2 2 0 00-2-2H8a2 2 0 00-2 2v14a2 2 0 002 2z" />
-                    </svg>
+              {/* Benefits */}
+              <div className="space-y-3 mb-6">
+                <div className="flex items-center gap-3 text-white">
+                  <div className="w-8 h-8 rounded-lg bg-[#FDB913]/20 flex items-center justify-center flex-shrink-0">
+                    <Clock className="w-4 h-4 text-[#FDB913]" />
                   </div>
-                  <p className="text-white text-sm font-medium">Phone Mounts</p>
+                  <span className="text-sm">24h early access</span>
                 </div>
-
-                {/* LED Lighting */}
-                <div className="backdrop-blur-sm bg-white/10 border border-white/20 rounded-xl p-4 hover:bg-white/20 transition-all group cursor-pointer">
-                  <div className="w-10 h-10 bg-white/20 rounded-lg flex items-center justify-center mb-3 group-hover:bg-[#FDB913] transition-all">
-                    <svg className="w-5 h-5 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z" />
-                    </svg>
+                <div className="flex items-center gap-3 text-white">
+                  <div className="w-8 h-8 rounded-lg bg-[#FDB913]/20 flex items-center justify-center flex-shrink-0">
+                    <Truck className="w-4 h-4 text-[#FDB913]" />
                   </div>
-                  <p className="text-white text-sm font-medium">LED Lighting</p>
+                  <span className="text-sm">Priority delivery</span>
                 </div>
-
-                {/* Audio Systems */}
-                <div className="backdrop-blur-sm bg-white/10 border border-white/20 rounded-xl p-4 hover:bg-white/20 transition-all group cursor-pointer">
-                  <div className="w-10 h-10 bg-white/20 rounded-lg flex items-center justify-center mb-3 group-hover:bg-[#FDB913] transition-all">
-                    <svg className="w-5 h-5 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15.536 8.464a5 5 0 010 7.072m2.828-9.9a9 9 0 010 12.728M5.586 15.536a5 5 0 001.414 1.414m3.536-9.192a9 9 0 010 12.728" />
-                    </svg>
+                <div className="flex items-center gap-3 text-white">
+                  <div className="w-8 h-8 rounded-lg bg-[#FDB913]/20 flex items-center justify-center flex-shrink-0">
+                    <Wrench className="w-4 h-4 text-[#FDB913]" />
                   </div>
-                  <p className="text-white text-sm font-medium">Audio Systems</p>
+                  <span className="text-sm">Free installation</span>
                 </div>
-
-                {/* Dash Cams */}
-                <div className="backdrop-blur-sm bg-white/10 border border-white/20 rounded-xl p-4 hover:bg-white/20 transition-all group cursor-pointer">
-                  <div className="w-10 h-10 bg-white/20 rounded-lg flex items-center justify-center mb-3 group-hover:bg-[#FDB913] transition-all">
-                    <svg className="w-5 h-5 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 10l4.553-2.276A1 1 0 0121 8.618v6.764a1 1 0 01-1.447.894L15 14M5 18h8a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v8a2 2 0 002 2z" />
-                    </svg>
+                <div className="flex items-center gap-3 text-white">
+                  <div className="w-8 h-8 rounded-lg bg-[#FDB913]/20 flex items-center justify-center flex-shrink-0">
+                    <Gift className="w-4 h-4 text-[#FDB913]" />
                   </div>
-                  <p className="text-white text-sm font-medium">Dash Cams</p>
+                  <span className="text-sm">₹1,999 merch</span>
                 </div>
               </div>
+
+              {/* CTA Button */}
+              <button
+                onClick={onGetEarlyAccess}
+                className="w-full bg-gradient-to-r from-[#FDB913] to-[#f5a800] text-[#001d4a] font-bold py-4 rounded-xl hover:shadow-lg hover:shadow-[#FDB913]/50 transition-all duration-300 text-base"
+              >
+                Claim ₹500 Credits + Founder's Pass
+              </button>
             </div>
           </div>
 
         </div>
       </div>
     </section>
-
-      {/* Stats Cards Section - Outside Hero */}
-      <section className="py-8 px-4 sm:px-6 lg:px-8 bg-white">
-        <div className="max-w-7xl mx-auto">
-          <div className="grid grid-cols-2 lg:grid-cols-4 gap-4">
-            <div className="bg-white rounded-2xl p-6 text-center shadow-lg border border-gray-100">
-              <div className="text-[#003AAD] mb-3 flex justify-center">
-                <Users className="w-8 h-8" />
-              </div>
-              <div className="text-3xl font-regular text-[#003AAD] mb-1">10,000+</div>
-              <div className="text-sm text-gray-600">Pre-Registrations</div>
-            </div>
-
-            <div className="bg-white rounded-2xl p-6 text-center shadow-lg border border-gray-100">
-              <div className="text-[#003AAD] mb-3 flex justify-center">
-                <Award className="w-8 h-8" />
-              </div>
-              <div className="text-3xl font-regular text-[#003AAD] mb-1">100+</div>
-              <div className="text-sm text-gray-600">Verified Vendors</div>
-            </div>
-
-            <div className="bg-white rounded-2xl p-6 text-center shadow-lg border border-gray-100">
-              <div className="text-[#003AAD] mb-3 flex justify-center">
-                <Package className="w-8 h-8" />
-              </div>
-              <div className="text-3xl font-regular text-[#003AAD] mb-1">10,000+</div>
-              <div className="text-sm text-gray-600">Products Ready</div>
-            </div>
-
-            <div className="bg-white rounded-2xl p-6 text-center shadow-lg border border-gray-100">
-              <div className="text-[#003AAD] mb-3 flex justify-center">
-                <svg className="w-8 h-8" fill="currentColor" viewBox="0 0 20 20">
-                  <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
-                </svg>
-              </div>
-              <div className="text-3xl font-regular text-[#003AAD] mb-1">4.8/5</div>
-              <div className="text-sm text-gray-600">Beta Rating</div>
-            </div>
-          </div>
-        </div>
-      </section>
     </>
   );
 }
