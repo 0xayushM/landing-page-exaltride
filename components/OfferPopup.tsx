@@ -13,74 +13,72 @@ export default function OfferPopup({ onGetEarlyAccess }: OfferPopupProps) {
   const [showCount, setShowCount] = useState(0);
   const [triggersUsed, setTriggersUsed] = useState<Set<string>>(new Set());
   const [clickCount, setClickCount] = useState(0);
+  const [hasScrolled, setHasScrolled] = useState(false);
 
+  // Timer effect - runs when popup is closed and timer hasn't been used
   useEffect(() => {
-    if (showCount >= 3 || isVisible) return; // Stop after showing 3 times or if already visible
+    if (showCount >= 3 || isVisible || triggersUsed.has('timer')) return;
 
-    let scrollTriggered = false;
-    let timeoutId: NodeJS.Timeout | null = null;
+    const timeoutId = setTimeout(() => {
+      setIsVisible(true);
+      setShowCount(prev => prev + 1);
+      setTriggersUsed(prev => new Set(prev).add('timer'));
+    }, 5000);
 
-    // Timer trigger - show after 5 seconds (only if not already used)
-    if (!triggersUsed.has('timer')) {
-      timeoutId = setTimeout(() => {
-        if (!isVisible && showCount < 3) {
-          setIsVisible(true);
-          setShowCount(prev => prev + 1);
-          setTriggersUsed(prev => new Set(prev).add('timer'));
-        }
-      }, 5000);
-    }
+    return () => clearTimeout(timeoutId);
+  }, [showCount, isVisible, triggersUsed]);
 
-    // Scroll trigger
+  // Scroll effect - persistent listener
+  useEffect(() => {
+    if (showCount >= 3 || triggersUsed.has('scroll')) return;
+
     const handleScroll = () => {
-      if (!scrollTriggered && !isVisible && showCount < 3 && !triggersUsed.has('scroll') && window.scrollY > 100) {
-        scrollTriggered = true;
+      if (!hasScrolled && window.scrollY > 100) {
+        setHasScrolled(true);
+      }
+      
+      if (hasScrolled && !isVisible && window.scrollY > 100) {
         setIsVisible(true);
         setShowCount(prev => prev + 1);
         setTriggersUsed(prev => new Set(prev).add('scroll'));
-        
-        // Clear timer if scroll triggered first
-        if (timeoutId) clearTimeout(timeoutId);
-      }
-    };
-
-    // Click trigger - show after 2+ clicks
-    const handleClick = () => {
-      if (!triggersUsed.has('click')) {
-        setClickCount(prev => {
-          const newCount = prev + 1;
-          if (newCount >= 2 && !isVisible && showCount < 3) {
-            setIsVisible(true);
-            setShowCount(prevShow => prevShow + 1);
-            setTriggersUsed(prevTriggers => new Set(prevTriggers).add('click'));
-            
-            // Clear timer if click triggered first
-            if (timeoutId) clearTimeout(timeoutId);
-            return 0; // Reset click count
-          }
-          return newCount;
-        });
       }
     };
 
     window.addEventListener('scroll', handleScroll);
-    window.addEventListener('click', handleClick);
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, [showCount, isVisible, triggersUsed, hasScrolled]);
 
-    return () => {
-      if (timeoutId) clearTimeout(timeoutId);
-      window.removeEventListener('scroll', handleScroll);
-      window.removeEventListener('click', handleClick);
+  // Click effect - persistent listener
+  useEffect(() => {
+    if (showCount >= 3 || triggersUsed.has('click')) return;
+
+    const handleClick = () => {
+      setClickCount(prev => {
+        const newCount = prev + 1;
+        if (newCount >= 2 && !isVisible) {
+          setIsVisible(true);
+          setShowCount(prevShow => prevShow + 1);
+          setTriggersUsed(prevTriggers => new Set(prevTriggers).add('click'));
+          return 0;
+        }
+        return newCount;
+      });
     };
+
+    window.addEventListener('click', handleClick);
+    return () => window.removeEventListener('click', handleClick);
   }, [showCount, isVisible, triggersUsed, clickCount]);
 
   const handleClose = () => {
     setIsVisible(false);
-    setClickCount(0); // Reset click count when popup closes
+    setClickCount(0);
+    setHasScrolled(false); // Reset scroll state
   };
 
   const handleClaim = () => {
     setIsVisible(false);
-    setClickCount(0); // Reset click count when popup closes
+    setClickCount(0);
+    setHasScrolled(false); // Reset scroll state
     onGetEarlyAccess();
   };
 
