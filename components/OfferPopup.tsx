@@ -95,7 +95,7 @@ export default function OfferPopup({ onGetEarlyAccess }: OfferPopupProps) {
       {/* Popup */}
       <div className="fixed inset-0 z-50 flex items-center justify-center p-4 pointer-events-none">
         <div 
-          className="relative max-w-4xl max-h-[90vh] md:max-h-[80vh] bg-[#002B5C] rounded-3xl shadow-2xl overflow-y-auto pointer-events-auto animate-scaleIn"
+          className="relative max-w-4xl h-[70vh] bg-[#002B5C] rounded-3xl shadow-2xl overflow-y-auto pointer-events-auto animate-scaleIn"
           onClick={(e) => e.stopPropagation()}
         >
           {/* Close Button */}
@@ -127,7 +127,7 @@ export default function OfferPopup({ onGetEarlyAccess }: OfferPopupProps) {
               {/* Welcome Bonus Card */}
               <div className="bg-gradient-to-br from-gray-700/50 to-gray-800/50 border-2 border-[#FDB913] rounded-xl p-4 mb-4">
                 <div className="flex items-center justify-center mb-2">
-                  <div className="w-10 h-10 rounded-full bg-[#FDB913] flex items-center justify-center">
+                  <div className="w-8 h-8 rounded-full bg-[#FDB913] flex items-center justify-center">
                     <Gift className="w-5 h-5 text-[#002B5C]" />
                   </div>
                 </div>
