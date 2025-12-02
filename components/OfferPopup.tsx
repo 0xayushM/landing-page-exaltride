@@ -95,7 +95,7 @@ export default function OfferPopup({ onGetEarlyAccess }: OfferPopupProps) {
       {/* Popup */}
       <div className="fixed inset-0 z-50 flex items-center justify-center p-4 pointer-events-none">
         <div 
-          className="relative max-w-4xl h-[70vh] bg-[#002B5C] rounded-3xl shadow-2xl overflow-y-auto pointer-events-auto animate-scaleIn"
+          className="relative w-full max-w-4xl max-h-[90vh] bg-[#002B5C] rounded-2xl md:rounded-3xl shadow-2xl overflow-hidden pointer-events-auto animate-scaleIn flex flex-col"
           onClick={(e) => e.stopPropagation()}
         >
           {/* Close Button */}
@@ -107,9 +107,9 @@ export default function OfferPopup({ onGetEarlyAccess }: OfferPopupProps) {
           </button>
 
           {/* Content */}
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-0 relative">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-0 relative overflow-y-auto">
             {/* Left Side - Content */}
-            <div className="p-4 md:p-6 flex flex-col justify-center relative z-10">
+            <div className="p-6 md:p-8 flex flex-col justify-center relative z-10">
               {/* Limited Time Badge */}
               <div className="inline-flex items-center gap-1.5 bg-[#FDB913]/20 border border-[#FDB913] text-[#FDB913] px-3 py-1.5 rounded-full text-xs font-bold mb-3 w-fit">
                 <Sparkles className="w-3 h-3" />
@@ -117,15 +117,15 @@ export default function OfferPopup({ onGetEarlyAccess }: OfferPopupProps) {
               </div>
 
               {/* Heading */}
-              <h2 className="text-2xl md:text-3xl font-bold text-white mb-2">
+              <h2 className="text-xl sm:text-2xl md:text-3xl font-bold text-white mb-2">
                 Get <span className="text-[#FDB913]">₹500* Free Credits</span>
               </h2>
-              <p className="text-gray-300 text-xs md:text-sm mb-4">
+              <p className="text-gray-300 text-xs sm:text-sm mb-3 md:mb-4">
                 Sign up now and unlock instant rewards + premium benefits
               </p>
 
               {/* Welcome Bonus Card */}
-              <div className="bg-gradient-to-br from-gray-700/50 to-gray-800/50 border-2 border-[#FDB913] rounded-xl p-4 mb-4">
+              <div className="bg-gradient-to-br from-gray-700/50 to-gray-800/50 border-2 border-[#FDB913] rounded-xl p-3 md:p-4 mb-3 md:mb-4">
                 <div className="flex items-center justify-center mb-2">
                   <div className="w-8 h-8 rounded-full bg-[#FDB913] flex items-center justify-center">
                     <Gift className="w-5 h-5 text-[#002B5C]" />
@@ -143,37 +143,37 @@ export default function OfferPopup({ onGetEarlyAccess }: OfferPopupProps) {
               </div>
 
               {/* Benefits Grid */}
-              <div className="grid grid-cols-2 gap-2 mb-4">
-                <div className="bg-[#001d4a]/50 border border-white/10 rounded-lg p-2.5">
-                  <div className="w-8 h-8 rounded-lg bg-[#FDB913] flex items-center justify-center mb-1.5">
-                    <Clock className="w-4 h-4 text-[#002B5C]" />
+              <div className="grid grid-cols-2 gap-2 mb-3 md:mb-4">
+                <div className="bg-[#001d4a]/50 border border-white/10 rounded-lg p-2">
+                  <div className="w-7 h-7 rounded-lg bg-[#FDB913] flex items-center justify-center mb-1">
+                    <Clock className="w-3.5 h-3.5 text-[#002B5C]" />
                   </div>
-                  <p className="text-white font-semibold text-xs">24 Hour Early Access</p>
-                  <p className="text-gray-400 text-xs mt-0.5">First to shop new arrivals</p>
+                  <p className="text-white font-semibold text-[10px] sm:text-xs leading-tight">24 Hour Early Access</p>
+                  <p className="text-gray-400 text-[9px] sm:text-xs mt-0.5 leading-tight">First to shop new arrivals</p>
                 </div>
 
-                <div className="bg-[#001d4a]/50 border border-white/10 rounded-lg p-2.5">
-                  <div className="w-8 h-8 rounded-lg bg-[#FDB913] flex items-center justify-center mb-1.5">
-                    <Truck className="w-4 h-4 text-[#002B5C]" />
+                <div className="bg-[#001d4a]/50 border border-white/10 rounded-lg p-2">
+                  <div className="w-7 h-7 rounded-lg bg-[#FDB913] flex items-center justify-center mb-1">
+                    <Truck className="w-3.5 h-3.5 text-[#002B5C]" />
                   </div>
-                  <p className="text-white font-semibold text-xs">Priority Delivery</p>
-                  <p className="text-gray-400 text-xs mt-0.5">Skip the queue in early access</p>
+                  <p className="text-white font-semibold text-[10px] sm:text-xs leading-tight">Priority Delivery</p>
+                  <p className="text-gray-400 text-[9px] sm:text-xs mt-0.5 leading-tight">Skip the queue in early access</p>
                 </div>
 
-                <div className="bg-[#001d4a]/50 border border-white/10 rounded-lg p-2.5">
-                  <div className="w-8 h-8 rounded-lg bg-[#FDB913] flex items-center justify-center mb-1.5">
-                    <Wrench className="w-4 h-4 text-[#002B5C]" />
+                <div className="bg-[#001d4a]/50 border border-white/10 rounded-lg p-2">
+                  <div className="w-7 h-7 rounded-lg bg-[#FDB913] flex items-center justify-center mb-1">
+                    <Wrench className="w-3.5 h-3.5 text-[#002B5C]" />
                   </div>
-                  <p className="text-white font-semibold text-xs">Free Installation*</p>
-                  <p className="text-gray-400 text-xs mt-0.5">First product purchased</p>
+                  <p className="text-white font-semibold text-[10px] sm:text-xs leading-tight">Free Installation*</p>
+                  <p className="text-gray-400 text-[9px] sm:text-xs mt-0.5 leading-tight">First product purchased</p>
                 </div>
 
-                <div className="bg-[#001d4a]/50 border border-white/10 rounded-lg p-2.5">
-                  <div className="w-8 h-8 rounded-lg bg-[#FDB913] flex items-center justify-center mb-1.5">
-                    <Gift className="w-4 h-4 text-[#002B5C]" />
+                <div className="bg-[#001d4a]/50 border border-white/10 rounded-lg p-2">
+                  <div className="w-7 h-7 rounded-lg bg-[#FDB913] flex items-center justify-center mb-1">
+                    <Gift className="w-3.5 h-3.5 text-[#002B5C]" />
                   </div>
-                  <p className="text-white font-semibold text-xs">Win Merchandise</p>
-                  <p className="text-gray-400 text-xs mt-0.5">Worth up to ₹1,999</p>
+                  <p className="text-white font-semibold text-[10px] sm:text-xs leading-tight">Win Merchandise</p>
+                  <p className="text-gray-400 text-[9px] sm:text-xs mt-0.5 leading-tight">Worth up to ₹1,999</p>
                 </div>
               </div>
 
@@ -194,8 +194,8 @@ export default function OfferPopup({ onGetEarlyAccess }: OfferPopupProps) {
 
               {/* Fine Print */}
               <div className="mt-2 text-center">
-                <p className="text-gray-400 text-xs">No payment required • Instant signup</p>
-                <p className="text-gray-500 text-xs mt-0.5">*If installation location comes under serviceable pincodes</p>
+                <p className="text-gray-400 text-[10px] sm:text-xs">No payment required • Instant signup</p>
+                <p className="text-gray-500 text-[9px] sm:text-xs mt-0.5">*If installation location comes under serviceable pincodes</p>
               </div>
             </div>
 
@@ -205,7 +205,7 @@ export default function OfferPopup({ onGetEarlyAccess }: OfferPopupProps) {
             </div>
 
             {/* Right Side - Image (Desktop Only) */}
-            <div className="hidden md:block relative h-[70vh] bg-gradient-to-br from-[#002B5C] to-[#001d4a]">
+            <div className="hidden md:block relative min-h-[400px] bg-gradient-to-br from-[#002B5C] to-[#001d4a]">
               <Image
                 src="/popup.png"
                 alt="Offer"
