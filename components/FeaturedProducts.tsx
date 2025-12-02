@@ -69,7 +69,7 @@ export default function FeaturedProducts() {
 
         {/* Products - Horizontal Scroll on Mobile, Grid on Desktop */}
         <div className="overflow-x-auto pb-4 -mx-4 px-4 sm:mx-0 sm:px-0 sm:overflow-visible">
-          <div className="flex gap-4 sm:grid sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 2xl:grid-cols-5 sm:gap-5 lg:gap-6">
+          <div className="flex gap-4 sm:grid sm:grid-cols-2 lg:grid-cols-4 sm:gap-5 lg:gap-6">
           {products.map((product) => (
             <div
               key={product.id}
