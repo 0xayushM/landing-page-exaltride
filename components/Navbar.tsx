@@ -1,4 +1,5 @@
 import Image from 'next/image';
+import Link from 'next/link';
 
 interface NavbarProps {
   onGetEarlyAccess: () => void;
@@ -42,6 +43,12 @@ export default function Navbar({ onGetEarlyAccess }: NavbarProps) {
             >
               For Vendors
             </a>
+            <Link
+              href="/policies"
+              className="text-sm font-medium text-gray-700 hover:text-[#003AAD] transition-colors"
+            >
+              Policies
+            </Link>
             <button
               onClick={scrollToFAQ}
               className="text-sm font-medium text-gray-700 hover:text-[#003AAD] transition-colors"

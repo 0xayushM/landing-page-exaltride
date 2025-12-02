@@ -5,7 +5,7 @@ import Navbar from '@/components/Navbar';
 import HeroSection from '@/components/HeroSection';
 import FeaturesSection from '@/components/FeaturesSection';
 import AudienceSection from '@/components/AudienceSection';
-import PopularCategories from '@/components/PopularCategories';
+import FeaturedProducts from '@/components/FeaturedProducts';
 import JoinForm from '@/components/JoinForm';
 import FAQSection from '@/components/FAQSection';
 import FinalCTA from '@/components/FinalCTA';
@@ -83,7 +83,7 @@ export default function Home() {
       <HeroSection onGetEarlyAccess={scrollToForm} />
       <FeaturesSection />
       <AudienceSection onGetEarlyAccess={scrollToForm} />
-      <PopularCategories />
+      <FeaturedProducts />
       <JoinForm />
       <FAQSection />
       {/* <FinalCTA onGetEarlyAccess={scrollToForm} /> */}

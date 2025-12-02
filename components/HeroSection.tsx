@@ -156,7 +156,6 @@ export default function HeroSection({ onGetEarlyAccess }: HeroSectionProps) {
                   <span className="text-white font-semibold text-sm">FOUNDER'S PASS</span>
                 </div>
                 <div className="flex gap-2">
-                  <span className="px-2.5 py-1 bg-emerald-500/20 text-emerald-400 text-xs font-semibold rounded-md border border-emerald-500/30">ACTIVE</span>
                   <span className="px-2.5 py-1 bg-amber-500/20 text-amber-400 text-xs font-semibold rounded-md border border-amber-500/30">LIMITED</span>
                 </div>
               </div>
