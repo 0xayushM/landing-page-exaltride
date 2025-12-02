@@ -6,6 +6,8 @@ import { useState, useEffect } from 'react';
 import productsData from '@/data/products.json';
 import Navbar from '@/components/Navbar';
 import Footer from '@/components/Footer';
+import { useCart } from '@/context/CartContext';
+import { ShoppingCart } from 'lucide-react';
 
 interface Product {
   id: string;
@@ -21,6 +23,7 @@ interface Product {
   freeDelivery: boolean;
   inStock: boolean;
   category: string;
+  brand?: string;
   features: string[];
   specifications: {
     [key: string]: string;
@@ -32,10 +35,26 @@ interface Product {
 export default function ProductPage() {
   const params = useParams();
   const router = useRouter();
+  const { addToCart, openCart } = useCart();
   const [product, setProduct] = useState<Product | null>(null);
   const [selectedColor, setSelectedColor] = useState<string>('');
   const [selectedImage, setSelectedImage] = useState<number>(0);
   const [quantity, setQuantity] = useState<number>(1);
+
+  const handleAddToCart = () => {
+    if (product) {
+      for (let i = 0; i < quantity; i++) {
+        addToCart({
+          id: product.id,
+          name: product.name,
+          price: product.price,
+          image: product.image,
+          brand: product.brand,
+        });
+      }
+      openCart();
+    }
+  };
 
   useEffect(() => {
     const foundProduct = productsData.find((p) => p.id === params.id) as Product | undefined;
@@ -262,10 +281,11 @@ export default function ProductPage() {
 
             {/* Action Buttons */}
             <div className="flex gap-4 mb-8">
-              <button className="flex-1 bg-yellow-400 hover:bg-yellow-500 text-gray-900 font-bold py-4 px-6 rounded-lg transition-colors flex items-center justify-center gap-2">
-                <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 11-4 0 2 2 0 014 0z" />
-                </svg>
+              <button 
+                onClick={handleAddToCart}
+                className="flex-1 bg-yellow-400 hover:bg-yellow-500 text-gray-900 font-bold py-4 px-6 rounded-lg transition-colors flex items-center justify-center gap-2"
+              >
+                <ShoppingCart className="w-5 h-5" />
                 Add to Cart
               </button>
               <button className="flex-1 bg-[#003AAD] hover:bg-[#002d8a] text-white font-bold py-4 px-6 rounded-lg transition-colors flex items-center justify-center gap-2">
