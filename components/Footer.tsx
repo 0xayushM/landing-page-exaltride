@@ -1,8 +1,16 @@
+'use client';
+
 import Image from 'next/image';
 import Link from 'next/link';
 import { Instagram, Linkedin, Facebook } from 'lucide-react';
 
 export default function Footer() {
+  const scrollToSection = (sectionId: string) => {
+    const section = document.getElementById(sectionId);
+    if (section) {
+      section.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }
+  };
   return (
     <footer className="bg-[#1a1f2e] text-white py-8 px-4 sm:px-6 lg:px-8">
       <div className="max-w-7xl mx-auto">
@@ -36,14 +44,14 @@ export default function Footer() {
                 </a>
               </li>
               <li>
-                <a href="#faq-section" className="hover:text-[#FDB913] transition-colors">
+                <button onClick={() => scrollToSection('faq-section')} className="hover:text-[#FDB913] transition-colors text-left">
                   FAQ
-                </a>
+                </button>
               </li>
               <li>
-                <a href="#join-form" className="hover:text-[#FDB913] transition-colors">
+                <button onClick={() => scrollToSection('join-form')} className="hover:text-[#FDB913] transition-colors text-left">
                   Get Early Access
-                </a>
+                </button>
               </li>
             </ul>
           </div>

@@ -29,9 +29,9 @@ export default function Navbar({ onGetEarlyAccess }: NavbarProps) {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between items-center h-16">
           {/* Logo */}
-          <div className="flex items-center">
+          <Link href="/" className="flex items-center">
             <Image src="/dark_logo.png" alt="Exaltride" width={120} height={40} className="h-20 w-auto" />
-          </div>
+          </Link>
           
           {/* Navigation Links */}
           <div className="hidden md:flex items-center space-x-6">

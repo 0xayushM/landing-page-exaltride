@@ -28,7 +28,9 @@ export default function FeaturedProducts() {
   const [products] = useState<Product[]>(productsData);
   const { addToCart, openCart } = useCart();
 
-  const handleAddToCart = (product: Product) => {
+  const handleAddToCart = (e: React.MouseEvent, product: Product) => {
+    e.preventDefault();
+    e.stopPropagation();
     addToCart({
       id: product.id,
       name: product.name,
@@ -86,8 +88,9 @@ export default function FeaturedProducts() {
         <div className="overflow-x-auto pb-4 -mx-4 px-4 sm:mx-0 sm:px-0 sm:overflow-visible">
           <div className="flex gap-4 sm:grid sm:grid-cols-2 lg:grid-cols-4 sm:gap-5 lg:gap-6">
           {products.map((product) => (
-            <div
+            <Link
               key={product.id}
+              href={`/product/${product.id}`}
               className="flex-shrink-0 w-[280px] sm:w-auto bg-white rounded-2xl overflow-hidden border border-gray-200 hover:shadow-xl transition-all duration-300 group"
             >
               {/* Product Image */}
@@ -144,21 +147,25 @@ export default function FeaturedProducts() {
                 {/* Buttons */}
                 <div className="flex gap-2 flex-col">
                   <button 
-                    onClick={() => handleAddToCart(product)}
+                    onClick={(e) => handleAddToCart(e, product)}
                     className="flex-1 bg-yellow-400 hover:bg-yellow-500 text-gray-900 font-bold py-2.5 px-3 rounded-lg transition-colors text-xs sm:text-sm flex items-center justify-center gap-1.5"
                   >
                     <ShoppingCart className="w-4 h-4" />
                     Add to cart
                   </button>
-                  <Link
-                    href={`/product/${product.id}`}
+                  <button
+                    onClick={(e) => {
+                      e.preventDefault();
+                      e.stopPropagation();
+                      window.location.href = `/product/${product.id}`;
+                    }}
                     className="flex-1 bg-[#003AAD] hover:bg-[#002d8a] text-white font-bold py-2.5 px-3 rounded-lg transition-colors text-xs sm:text-sm text-center"
                   >
                     Buy Now
-                  </Link>
+                  </button>
                 </div>
               </div>
-            </div>
+            </Link>
           ))}
           </div>
         </div>
