@@ -59,6 +59,12 @@ export default function Navbar({ onGetEarlyAccess }: NavbarProps) {
             >
               FAQ
             </button>
+            <Link
+            href="/contacts"
+            className="text-sm font-medium text-gray-700 hover:text-[#003AAD] transition-colors"
+          >
+            Contact Us
+          </Link>
             <CartButton />
             <button
               onClick={onGetEarlyAccess}

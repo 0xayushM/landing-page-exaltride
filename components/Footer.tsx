@@ -49,6 +49,11 @@ export default function Footer() {
                 </button>
               </li>
               <li>
+              <Link href="/contacts" className="hover:text-[#FDB913] transition-colors">
+                Contact Us
+              </Link>
+            </li>
+              <li>
                 <button onClick={() => scrollToSection('join-form')} className="hover:text-[#FDB913] transition-colors text-left">
                   Get Early Access
                 </button>
