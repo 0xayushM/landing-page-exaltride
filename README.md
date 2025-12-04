@@ -1,6 +1,6 @@
 # Exaltride Landing Page
 
-A modern, conversion-optimized landing page for Exaltride - India's new aftermarket marketplace for car accessories.
+A modern, conversion-optimized landing page for Exaltride - India's new aftermarket marketplace for car accessories
 
 ## Features
 
