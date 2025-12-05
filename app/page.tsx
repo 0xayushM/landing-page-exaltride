@@ -13,6 +13,7 @@ import PlatformPreview from '@/components/PlatformPreview';
 import CTASection from '@/components/CTASection';
 import Footer from '@/components/Footer';
 import OfferPopup from '@/components/OfferPopup';
+import PopularCategories from '@/components/PopularCategories';
 
 export default function Home() {
   // Track visitor on page load
@@ -83,7 +84,8 @@ export default function Home() {
       <HeroSection onGetEarlyAccess={scrollToForm} />
       <FeaturesSection />
       <AudienceSection onGetEarlyAccess={scrollToForm} />
-      <FeaturedProducts />
+      {/* <FeaturedProducts /> */}
+      <PopularCategories/>
       <JoinForm />
       <FAQSection />
       {/* <FinalCTA onGetEarlyAccess={scrollToForm} /> */}

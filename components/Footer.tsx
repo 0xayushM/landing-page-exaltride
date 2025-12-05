@@ -34,11 +34,6 @@ export default function Footer() {
             <h3 className="text-white font-semibold mb-4">Quick Links</h3>
             <ul className="space-y-2 text-sm text-gray-300">
               <li>
-                <Link href="/policies" className="hover:text-[#FDB913] transition-colors">
-                  Our Policies
-                </Link>
-              </li>
-              <li>
                 <a href="https://vendor.exaltride.com" className="hover:text-[#FDB913] transition-colors">
                   For Vendors
                 </a>
@@ -48,11 +43,6 @@ export default function Footer() {
                   FAQ
                 </button>
               </li>
-              <li>
-              <Link href="/contacts" className="hover:text-[#FDB913] transition-colors">
-                Contact Us
-              </Link>
-            </li>
               <li>
                 <button onClick={() => scrollToSection('join-form')} className="hover:text-[#FDB913] transition-colors text-left">
                   Get Early Access
@@ -109,23 +99,6 @@ export default function Footer() {
         <div className="border-t border-gray-700 pt-6">
           <div className="flex flex-col md:flex-row justify-between items-center gap-4 text-sm text-gray-400">
             <p>&copy; 2025 Exaltride. All rights reserved.</p>
-            <div className="flex flex-wrap justify-center gap-4 text-xs">
-              <Link href="/policies#privacy-policy" className="hover:text-[#FDB913] transition-colors">
-                Privacy Policy
-              </Link>
-              <span className="text-gray-600">•</span>
-              <Link href="/policies#terms-of-service" className="hover:text-[#FDB913] transition-colors">
-                Terms of Service
-              </Link>
-              <span className="text-gray-600">•</span>
-              <Link href="/policies#return-refund-policy" className="hover:text-[#FDB913] transition-colors">
-                Returns & Refunds
-              </Link>
-              <span className="text-gray-600">•</span>
-              <Link href="/policies#shipping-policy" className="hover:text-[#FDB913] transition-colors">
-                Shipping Policy
-              </Link>
-            </div>
           </div>
           <div className="mt-4 text-xs text-gray-500">
             <p>* ₹500 credits applicable on orders above ₹2499</p>
